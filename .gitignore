@@ -1,0 +1,5 @@
+.DS_Store
+_ref/
+dist/
+node_modules/
+assets/download_report.txt
