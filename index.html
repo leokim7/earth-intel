@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=1440">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SGMA — Earth Intelligence Platform</title>
 <meta name="description" content="SGMA는 글로벌 기상·해양·농수산·위성·우주 데이터를 통합하여 산업과 공공 분야에 실시간 모니터링, 24~72시간 예측, 실행 가이드를 제공하는 Earth Intelligence Platform입니다.">
 <style>
@@ -70,10 +70,10 @@
   .hero-bg .shade{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(11,13,32,0) 85.45%,#0b0d20 100%)}
   .hero-in{opacity:0;transform:translateY(26px);animation:heroIn 1s cubic-bezier(.22,.61,.36,1) forwards;animation-delay:var(--hd,0s)}
   .hero-in.cx{transform:translateX(-50%) translateY(26px);animation-name:heroInCx}
-  @keyframes heroIn{to{opacity:1;transform:translateY(0)}}
-  @keyframes heroInCx{to{opacity:1;transform:translateX(-50%) translateY(0)}}
+  @keyframes heroIn{to{opacity:var(--o,1);transform:translateY(0)}}
+  @keyframes heroInCx{to{opacity:var(--o,1);transform:translateX(-50%) translateY(0)}}
   .hero-title{top:146px;font-weight:700;font-size:46px;line-height:1.3;letter-spacing:-3px;text-align:center;white-space:nowrap}
-  .hero-sub{top:286px;font-weight:500;font-size:16px;line-height:1.4;letter-spacing:-.32px;text-align:center;opacity:.6;white-space:nowrap}
+  .hero-sub{top:286px;font-weight:500;font-size:16px;line-height:1.4;letter-spacing:-.32px;text-align:center;white-space:nowrap;--o:.6}
   .hero-btns{top:360px;display:flex;gap:20px}
   .glass-btn{
     display:flex;align-items:center;justify-content:center;padding:14px 24px;border-radius:10px;
@@ -257,10 +257,12 @@
   .i-card{position:relative;width:300px;height:300px;flex-shrink:0;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;
     align-items:flex-end;justify-content:flex-end;padding:30px 24px;cursor:pointer;
     transition:height .55s cubic-bezier(.33,1,.36,1),transform .8s cubic-bezier(.22,.61,.36,1),opacity .8s cubic-bezier(.22,.61,.36,1)}
-  .i-card:hover{height:434px}
-  .icol:has(> .i-card:first-child:hover) > .i-card:last-child:not(:hover),
-  .icol:has(> .i-card:last-child:hover) > .i-card:first-child:not(:hover){height:166px}
-  .icol:has(> .i-card:hover) > .i-card:not(:hover) .s{opacity:0;max-height:0;margin-top:0}
+  @media (min-width:769px){
+    .i-card:hover{height:434px}
+    .icol:has(> .i-card:first-child:hover) > .i-card:last-child:not(:hover),
+    .icol:has(> .i-card:last-child:hover) > .i-card:first-child:not(:hover){height:166px}
+    .icol:has(> .i-card:hover) > .i-card:not(:hover) .s{opacity:0;max-height:0;margin-top:0}
+  }
   .i-card .ph{position:absolute;z-index:0}
   .i-card .ph img{width:100%;height:100%;object-fit:cover}
   .i-card .ph .shade{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(35,37,54,.3) 4%,#232536 94%)}
@@ -298,6 +300,144 @@
   .f-col li a:hover{opacity:.6}
   .f-div{width:100%;height:1px;background:rgba(255,255,255,.2)}
   .f-copy{font-weight:400;font-size:14px;line-height:1.4;letter-spacing:-.28px;opacity:.3}
+
+  /* ================= RESPONSIVE ================= */
+  .sec,.hero-stats,.hstat,.kgrid{display:contents}
+  .scale-wrap{overflow:hidden}
+  .nav-burger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;background:none;border:none;cursor:pointer}
+  .nav-burger span{display:block;width:20px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s}
+  nav.open .nav-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  nav.open .nav-burger span:nth-child(2){opacity:0}
+  nav.open .nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  @media (max-width:1439px){
+    nav{min-width:0}
+    .nav-inner{width:calc(100% - 48px);max-width:1200px}
+    body{overflow-x:hidden}
+    .artboard{margin:0}
+  }
+
+  @media (max-width:768px){
+    .artboard{width:100%;height:auto}
+    .abs{position:static}
+    .cx{transform:none;left:auto}
+    .rv.cx{transform:translateY(28px)}
+    .rv.cx.on{transform:none}
+    .hero-in.cx{animation-name:heroIn;transform:translateY(26px)}
+
+    nav{height:60px}
+    .nav-inner{width:calc(100% - 40px)}
+    .nav-logo{font-size:20px}
+    .nav-burger{display:flex}
+    .nav-menu{position:fixed;top:60px;left:0;right:0;display:none;flex-direction:column;align-items:stretch;gap:2px;
+      background:rgba(8,10,24,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+      padding:14px 20px 24px;border-bottom:1px solid rgba(255,255,255,.08)}
+    nav.open .nav-menu{display:flex}
+    .nav-link{padding:13px 4px;text-align:left}
+    .nav-cta{margin-top:10px;text-align:center}
+
+    .sec{display:flex;flex-direction:column;align-items:flex-start;position:relative}
+
+    /* hero */
+    .s-hero{align-items:center;padding:104px 24px 64px}
+    .hero-bg{position:absolute;top:0;left:0;width:100%;height:620px;margin-left:0}
+    .hero-bg .shade{background:linear-gradient(to bottom,rgba(11,13,32,0) 68%,#0b0d20 100%)}
+    .hero-title{position:relative;top:auto;font-size:34px;letter-spacing:-1.5px}
+    .hero-sub{position:relative;top:auto;left:auto !important;white-space:normal;font-size:14px;margin-top:16px;max-width:440px}
+    .hero-sub br{display:none}
+    .hero-btns{position:relative;top:auto;margin-top:28px}
+    .scroll-pin,.scroll-txt,.img9{display:none}
+    .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:36px 20px;width:100%;margin-top:300px}
+    .hstat{display:flex;flex-direction:column;gap:8px}
+    .stat-num{font-size:34px;line-height:1.1}
+    .stat-lbl{font-size:13px}
+
+    /* section commons */
+    .s-about,.s-arch,.s-track,.s-future,.s-horizon{padding:72px 24px 0}
+    .h2-46{font-size:30px;letter-spacing:-1px;white-space:normal;width:auto !important;margin-top:20px}
+    .h2-46xb{font-size:26px;letter-spacing:-.8px;width:auto !important;margin-top:20px}
+    .body-16{width:auto !important;white-space:normal !important;margin-top:16px}
+    .body-16 p{white-space:normal !important}
+
+    /* about */
+    .about-cards{position:static;display:flex;gap:14px;width:calc(100% + 48px);margin:32px -24px 0;
+      padding:8px 24px 16px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+    .p-card{width:250px;height:330px;scroll-snap-align:start}
+    .p-card .ph{left:0 !important;top:0 !important;width:100% !important;height:100% !important}
+    .p-card .cap{font-size:20px}
+    .hline,.hline-blue,.vline-blue{display:none}
+    .kgrid{display:flex;flex-direction:column;gap:26px;width:100%;margin-top:48px}
+    .kstat{width:100%;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.12)}
+    .kstat .row{gap:20px !important;justify-content:flex-start !important}
+    .kstat .k-num{font-size:36px;line-height:1.15}
+    .kstat .k-desc{width:auto;flex:1}
+
+    /* architecture */
+    .s-arch{align-items:center;text-align:center}
+    .arch-cta{margin-top:26px;font-size:18px;padding:14px 22px}
+    .bracket,.arch-vline{display:none}
+    .l-card{position:static;width:100%;margin-top:20px;text-align:left}
+    .l-card .l-desc{width:100% !important}
+    .l-title,.l-item{white-space:normal}
+    .s-arch .l-card:first-of-type{margin-top:36px}
+
+    /* track record */
+    .prod-card{position:static;width:100%;margin-top:20px;flex-direction:column;align-items:flex-start;padding:20px;gap:18px}
+    .s-track .prod-card:first-of-type{margin-top:36px}
+    .prod-body{gap:14px;width:100%}
+    .prod-title{font-size:22px;white-space:normal}
+    .prod-desc{width:100% !important}
+    .prod-stats{flex-wrap:wrap;gap:16px 28px !important}
+    .ps{width:auto !important}
+    .ps .b{font-size:16px}
+
+    /* vision (light) */
+    .vision{position:static;width:100%;height:auto;margin-left:0;padding:72px 24px;gap:40px}
+    .vision .head{flex-direction:column;align-items:flex-start;gap:32px}
+    .vision h2{font-size:30px;white-space:normal;letter-spacing:-.6px}
+    .vision .lead{white-space:normal;font-size:15px}
+    .vision .lead br{display:none}
+    .vision .big{font-size:92px;line-height:1;letter-spacing:-3px}
+    .v-cards{flex-direction:column;width:100%;gap:16px}
+    .v-card{width:100%}
+    .v-card .icon{left:auto;right:10px}
+
+    .cover-bg{display:none}
+
+    /* time horizon */
+    .s-horizon{align-items:center;text-align:center}
+    .th-title{font-size:30px;width:auto !important;margin-top:20px;letter-spacing:-.6px}
+    .spectrum{position:static;width:100%;margin-top:36px}
+    .th-cards{position:static;width:100%;flex-direction:column;margin-top:24px;text-align:left}
+    .th-card{width:100%}
+
+    /* future vision — single column, desktop reading order */
+    .ind-grid{position:static;flex-direction:column;width:100%;height:auto;gap:16px;margin-top:32px}
+    .icol{display:contents}
+    .i-card{width:100%;height:240px}
+    .i-card + .i-card{margin-top:0}
+    .icol:nth-child(1) .i-card{order:3}
+    .icol:nth-child(2) .i-card:first-child{order:1}
+    .icol:nth-child(2) .i-card:last-child{order:4}
+    .icol:nth-child(3) .i-card:first-child{order:2}
+    .icol:nth-child(3) .i-card:last-child{order:5}
+    .i-card .ph{left:0 !important;top:0 !important;width:100% !important;bottom:0 !important}
+
+    /* partners */
+    .partners{position:static;width:100%;height:auto;margin-left:0;padding:72px 0 88px;gap:40px}
+    .partners .head{width:auto;padding:0 24px}
+    .partners h2{font-size:30px}
+    .marquee{width:100%}
+    .logo-card{width:220px;height:104px}
+    .logo-card img{width:130px;height:41px}
+
+    /* footer */
+    footer{position:static;width:100%;height:auto;margin-left:0;padding:48px 24px}
+    .f-top{flex-direction:column;align-items:flex-start;gap:36px}
+    .f-brand{width:auto;gap:16px}
+    .f-cols{flex-wrap:wrap;gap:24px 20px}
+    .f-col{width:150px;height:auto}
+  }
 </style>
 </head>
 <body>
@@ -305,6 +445,7 @@
 <nav id="nav">
   <div class="nav-inner">
     <a class="nav-logo" data-go="top">SGMA</a>
+    <button class="nav-burger" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
     <div class="nav-menu">
       <button class="nav-link" data-go="sec-about">About US</button>
       <button class="nav-link" data-go="sec-arch">Earth Intelligence</button>
@@ -315,13 +456,15 @@
   </div>
 </nav>
 
+<div class="scale-wrap">
 <div class="artboard">
 
   <!-- ======== HERO ======== -->
+  <div class="sec s-hero">
   <div class="abs hero-bg"><img src="assets/imgImage8.png" alt="Earth from space"><div class="shade"></div></div>
 
   <div class="abs cx hero-title hero-in cx" style="--hd:.1s">지구의 데이터로<br>산업을 움직입니다</div>
-  <div class="abs cx hero-sub hero-in cx" style="--hd:.3s;left:calc(50% + .5px)">SGMA는 글로벌 기상·해양·농수산·위성·우주 데이터를 통합하여 산업과 공공 분야에<br>실시간 모니터링, 24~72시간 예측, 실행 가이드를 제공하는 Earth Intelligence Platform입니다.</div>
+  <div class="abs cx hero-sub hero-in cx" style="--hd:.3s;left:calc(50% + .5px)">SGMA는 글로벌 기상·해양·농수산·위성·우주 데이터를 통합하여 산업과 공공 분야에 <br>실시간 모니터링, 24~72시간 예측, 실행 가이드를 제공하는 Earth Intelligence Platform입니다.</div>
   <div class="abs cx hero-btns hero-in cx" style="--hd:.5s">
     <a class="glass-btn" data-go="sec-arch">플랫폼 소개</a>
     <a class="glass-btn" data-go="sec-partners">투자 문의</a>
@@ -330,18 +473,30 @@
   <p class="abs scroll-txt hero-in" style="--hd:.9s;left:687px">SCROLL</p>
 
   <!-- hero stats -->
-  <p class="abs stat-num rv" style="left:120px;top:859px" data-count="1000000" data-fmt="m">1M+</p>
-  <p class="abs stat-lbl rv" style="left:120px;top:921px;--d:.05s">어신앱 누적 다운로드</p>
-  <p class="abs stat-num rv" style="left:474px;top:859px;--d:.1s" data-count="471">471</p>
-  <p class="abs stat-lbl rv" style="left:474px;top:921px;--d:.15s">글로벌 데이터 소스</p>
-  <p class="abs stat-num rv" style="left:828px;top:859px;--d:.2s">24-72h</p>
-  <p class="abs stat-lbl rv" style="left:828px;top:921px;--d:.25s">Forecast Horizon</p>
-  <p class="abs stat-num rv" style="left:1183px;top:859px;--d:.3s" data-count="5">5</p>
-  <p class="abs stat-lbl rv" style="left:1183px;top:921px;--d:.35s">Vertical 산업 도메인</p>
+  <div class="hero-stats">
+    <div class="hstat">
+      <p class="abs stat-num rv" style="left:120px;top:859px" data-count="1000000" data-fmt="m">1M+</p>
+      <p class="abs stat-lbl rv" style="left:120px;top:921px;--d:.05s">어신앱 누적 다운로드</p>
+    </div>
+    <div class="hstat">
+      <p class="abs stat-num rv" style="left:474px;top:859px;--d:.1s" data-count="471">471</p>
+      <p class="abs stat-lbl rv" style="left:474px;top:921px;--d:.15s">글로벌 데이터 소스</p>
+    </div>
+    <div class="hstat">
+      <p class="abs stat-num rv" style="left:828px;top:859px;--d:.2s">24-72h</p>
+      <p class="abs stat-lbl rv" style="left:828px;top:921px;--d:.25s">Forecast Horizon</p>
+    </div>
+    <div class="hstat">
+      <p class="abs stat-num rv" style="left:1183px;top:859px;--d:.3s" data-count="5">5</p>
+      <p class="abs stat-lbl rv" style="left:1183px;top:921px;--d:.35s">Vertical 산업 도메인</p>
+    </div>
+  </div>
 
   <div class="abs img9"><img src="assets/imgImage9.png" alt=""><div class="shade"></div></div>
+  </div><!-- /s-hero -->
 
   <!-- ======== ABOUT ======== -->
+  <div class="sec s-about">
   <div id="sec-about" class="abs" style="left:0;top:1153px;width:1px;height:1px"></div>
   <div class="abs pill rv" style="left:120px;top:1153px">ABOUT SGMA</div>
   <div class="abs h2-46 rv" style="left:120px;top:1222px;--d:.1s">데이터로 더 나은<br>결정을 만드는 회사</div>
@@ -371,24 +526,28 @@
   <div class="abs hline-blue rv-fade" style="left:120px;top:1740px;width:1200px"></div>
   <div class="abs vline-blue rv-fade" style="left:719.5px;top:1611px;height:258px"></div>
 
-  <div class="abs kstat rv" style="left:160px;top:1627px">
-    <p class="k-lbl">User Base</p>
-    <div class="row" style="gap:30px"><p class="k-num" data-count="100" data-fmt="man">100만+</p><div class="k-desc"><p>어신앱 누적 다운로드</p><p>실 사용자 기반의 행동·환경 데이터 자산</p></div></div>
+  <div class="kgrid">
+    <div class="abs kstat rv" style="left:160px;top:1627px">
+      <p class="k-lbl">User Base</p>
+      <div class="row" style="gap:30px"><p class="k-num" data-count="100" data-fmt="man">100만+</p><div class="k-desc"><p>어신앱 누적 다운로드</p><p>실 사용자 기반의 행동·환경 데이터 자산</p></div></div>
+    </div>
+    <div class="abs kstat rv" style="left:825px;top:1627px;--d:.1s">
+      <p class="k-lbl">User Base</p>
+      <div class="row" style="gap:100px"><p class="k-num" data-count="471">471</p><div class="k-desc"><p>한국 공공 211 + 글로벌 161 + 우주 99</p><p>단일 통합 카탈로그</p></div></div>
+    </div>
+    <div class="abs kstat rv" style="left:160px;top:1770px;--d:.2s">
+      <p class="k-lbl">AI Vision</p>
+      <div class="row" style="gap:73px"><p class="k-num">Fuler</p><div class="k-desc"><p>어신앱 누적 다운로드</p><p>실 사용자 기반의 행동·환경 데이터 자산</p></div></div>
+    </div>
+    <div class="abs kstat rv" style="left:825px;top:1770px;--d:.3s">
+      <p class="k-lbl">Verticals</p>
+      <div class="row" style="justify-content:space-between"><p class="k-num" data-count="5">5</p><div class="k-desc"><p>양식·재난·농업·유통·금융</p><p>산업 도메인 특화 SaaS·License</p></div></div>
+    </div>
   </div>
-  <div class="abs kstat rv" style="left:825px;top:1627px;--d:.1s">
-    <p class="k-lbl">User Base</p>
-    <div class="row" style="gap:100px"><p class="k-num" data-count="471">471</p><div class="k-desc"><p>한국 공공 211 + 글로벌 161 + 우주 99</p><p>단일 통합 카탈로그</p></div></div>
-  </div>
-  <div class="abs kstat rv" style="left:160px;top:1770px;--d:.2s">
-    <p class="k-lbl">AI Vision</p>
-    <div class="row" style="gap:73px"><p class="k-num">Fuler</p><div class="k-desc"><p>어신앱 누적 다운로드</p><p>실 사용자 기반의 행동·환경 데이터 자산</p></div></div>
-  </div>
-  <div class="abs kstat rv" style="left:825px;top:1770px;--d:.3s">
-    <p class="k-lbl">Verticals</p>
-    <div class="row" style="justify-content:space-between"><p class="k-num" data-count="5">5</p><div class="k-desc"><p>양식·재난·농업·유통·금융</p><p>산업 도메인 특화 SaaS·License</p></div></div>
-  </div>
+  </div><!-- /s-about -->
 
   <!-- ======== ARCHITECTURE ======== -->
+  <div class="sec s-arch">
   <div id="sec-arch" class="abs" style="left:0;top:2015px;width:1px;height:1px"></div>
   <div class="abs cx pill rv cx" style="top:2015px">EARTH&nbsp;&nbsp;INTELLIGENCE&nbsp;&nbsp;ARCHITECTURE</div>
   <p class="abs cx h2-46 rv cx" style="top:2084px;letter-spacing:normal;--d:.1s">지구의 정보를 행동으로</p>
@@ -441,11 +600,14 @@
     <div><p class="l-foot-num" data-count="5">5</p><p class="l-foot-lbl">Vertical Domain</p></div>
   </div>
 
+  </div><!-- /s-arch -->
+
   <!-- ======== TRACK RECORD ======== -->
+  <div class="sec s-track">
   <div id="sec-track" class="abs" style="left:0;top:3025px;width:1px;height:1px"></div>
   <div class="abs pill rv" style="left:120px;top:3025px">TRACK&nbsp;&nbsp;RECORD</div>
   <div class="abs h2-46xb rv" style="left:120px;top:3094px;width:1200px;--d:.1s">검증된 서비스를 만들었습니다.<br>이제 더 많은 산업으로 확장합니다.</div>
-  <div class="abs rv" style="left:120px;top:3238px;width:760px;font-weight:400;font-size:16px;line-height:1.4;opacity:0;--d:.2s" data-keep-op=".7">
+  <div class="abs rv body-16" style="left:120px;top:3238px;width:760px;font-weight:400;font-size:16px;line-height:1.4;letter-spacing:0;opacity:0;--d:.2s" data-keep-op=".7">
     <p>SGMA 는 이미 한국 수산 산업에서 검증된 3가지 제품을 운영하며, 4번째 제품 BlueMatrix 를 출시합니다.</p>
     <p>이 제품들이 Earth Intelligence 의 데이터·사용자·AI·플랫폼 기반을 형성합니다.</p>
   </div>
@@ -557,6 +719,8 @@
     </div>
   </div>
 
+  </div><!-- /s-track -->
+
   <!-- ======== OUR VISION (light) ======== -->
   <section class="abs vision" id="sec-vision" style="left:50%">
     <div class="head">
@@ -565,7 +729,7 @@
           <div class="pill blue rv">OUR VISION</div>
           <h2 class="rv" style="--d:.1s">데이터의 깊이가<br>차별을 만듭니다</h2>
         </div>
-        <div class="lead rv" style="--d:.2s">다양한 출처의 데이터를 하나의 플랫폼에서 통합하고 지속적으로 업데이트합니다.<br>AI 기반 분석과 도메인 특화 모델을 통해 복잡한 데이터를 실행 가능한 인사이트로 전환합니다.</div>
+        <div class="lead rv" style="--d:.2s">다양한 출처의 데이터를 하나의 플랫폼에서 통합하고 지속적으로 업데이트합니다. <br>AI 기반 분석과 도메인 특화 모델을 통해 복잡한 데이터를 실행 가능한 인사이트로 전환합니다.</div>
       </div>
       <p class="big rv" style="--d:.25s" data-count="471">471</p>
     </div>
@@ -592,6 +756,7 @@
   <div class="abs cover-bg"><img src="assets/imgPluginFileCover1.svg" alt=""></div>
 
   <!-- ======== TIME HORIZON ======== -->
+  <div class="sec s-horizon">
   <div id="sec-horizon" class="abs" style="left:0;top:5530px;width:1px;height:1px"></div>
   <div class="abs cx pill rv cx" style="top:5530px">TIME&nbsp;&nbsp;HORIZON</div>
   <div class="abs cx th-title rv cx" style="top:5595px;width:1288px;--d:.1s">예측을 넘어<br>실행까지 연결합니다</div>
@@ -632,7 +797,10 @@
     </div>
   </div>
 
+  </div><!-- /s-horizon -->
+
   <!-- ======== FUTURE VISION / industries ======== -->
+  <div class="sec s-future">
   <div class="abs pill rv" style="left:120px;top:6505px">FUTURE&nbsp;&nbsp;VISION</div>
   <div class="abs h2-46 rv" style="left:120px;top:6570px;letter-spacing:-.92px;white-space:normal;width:380px;--d:.1s">핵심 산업을 시작으로 확장을 이어갑니다</div>
   <div class="abs body-16 rv" style="left:120px;top:6714px;width:334px;opacity:0;--d:.2s" data-keep-op=".6">산업별 특성을 반영한 Earth Intelligence Platform을 핵심 분야부터 순차적으로 확대합니다.</div>
@@ -670,6 +838,8 @@
       </div>
     </div>
   </div>
+
+  </div><!-- /s-future -->
 
   <!-- ======== PARTNERS ======== -->
   <section class="abs partners" id="sec-partners" style="left:50%">
@@ -716,6 +886,7 @@
   </footer>
 
 </div><!-- /artboard -->
+</div><!-- /scale-wrap -->
 
 <script>
 (function(){
@@ -785,6 +956,54 @@
   /* ---- marquee: duplicate once for seamless loop ---- */
   var track = document.getElementById('marqueeTrack');
   track.innerHTML += track.innerHTML;
+
+  /* ---- mobile menu ---- */
+  var burger = document.querySelector('.nav-burger');
+  if(burger){
+    burger.addEventListener('click', function(){ nav.classList.toggle('open'); });
+    document.querySelectorAll('.nav-menu [data-go]').forEach(function(el){
+      el.addEventListener('click', function(){ nav.classList.remove('open'); });
+    });
+  }
+
+  /* ---- responsive: scale 1440 artboard between 769-1439px ---- */
+  var wrap = document.querySelector('.scale-wrap');
+  var art = document.querySelector('.artboard');
+  function fitScale(){
+    var w = document.documentElement.clientWidth;
+    if(w > 768 && w < 1440){
+      var s = w / 1440;
+      art.style.transform = 'scale(' + s + ')';
+      art.style.transformOrigin = 'top left';
+      wrap.style.height = (8518 * s) + 'px';
+    } else {
+      art.style.transform = '';
+      wrap.style.height = '';
+    }
+  }
+
+  /* ---- responsive: scale product graphics on mobile ---- */
+  function fitGraphics(){
+    var w = document.documentElement.clientWidth;
+    var mobile = w <= 768;
+    document.querySelectorAll('.g-wrap').forEach(function(g){
+      if(mobile){
+        var gw = g.getBoundingClientRect().width ? 380 : 380;
+        var avail = Math.min(w - 88, 380);
+        var s = avail / 380;
+        if(s < 1){
+          g.style.transform = 'scale(' + s + ')';
+          g.style.transformOrigin = 'top left';
+          g.style.marginBottom = (-210 * (1 - s)) + 'px';
+        } else { g.style.transform=''; g.style.marginBottom=''; }
+      } else {
+        g.style.transform=''; g.style.marginBottom='';
+      }
+    });
+  }
+  function onResize(){ fitScale(); fitGraphics(); }
+  addEventListener('resize', onResize, {passive:true});
+  onResize();
 })();
 </script>
 </body>
