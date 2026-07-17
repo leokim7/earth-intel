@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technology — SGMA</title>
+<meta name="description" content="MME·TSF·Activity Index — 관측부터 예측, 서비스 API까지 풀스택 예측 기술">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body><header class="nav">
+  <div class="nav__in">
+    <a href="index.html" class="nav__logo">SGMA</a>
+    <button class="nav__burger" aria-label="menu"><span></span><span></span><span></span></button>
+    <ul class="nav__menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li class="dd"><a href="#" aria-haspopup="true">Service <svg class="caret" viewBox="0 0 9 6"><path d="M0 0l4.5 6L9 0z"/></svg></a>
+        <div class="dd__panel">
+          <a class="dd__item" href="yeosin.html"><b><i></i>어신 앱</b><span>B2C 해양 내비게이터 — 낚시 지수 · 입질확률 · 물때</span></a>
+          <a class="dd__item" href="partners.html"><b><i></i>어신 파트너스</b><span>선상낚시 · 해양레저 업체 제휴 플랫폼</span></a>
+          <a class="dd__item" href="fuler.html"><b><i></i>Fuler</b><span>글로벌 AI 어종 인식 · 어획 기록</span></a>
+          <a class="dd__item" href="bluematrix.html"><b><i></i>BlueMatrix</b><span>B2B · B2G 기상 · 해양 데이터 플랫폼</span></a>
+        </div>
+      </li>
+      <li><a href="technology.html" class="active">Technology</a></li>
+      <li><a href="contact.html" class="btn btn--pri nav__cta">Contact Us</a></li>
+    </ul>
+  </div>
+</header><section class="hero">
+  <div class="hero__bg" style="background-image:url('assets/img/hero-technology.jpg')"></div>
+  <div class="hero__dim"></div>
+  <div class="hero__in">
+    <div class="st eyebrow" style="color:#aab3ff">Core Technology</div>
+    <h1 class="st">5년의 데이터가 만든<br>예측 기술</h1>
+    <p class="st sub">관측 데이터 수집부터 오차 보정, 생태계 예측, 서비스 API까지 —<br>SGMA는 기상·해양 예측의 전 과정을 자체 기술로 보유한 풀스택 GEO TECH 기업입니다.</p>
+    <div class="st hero__cta"><a href="contact.html" class="btn btn--pri">기술 도입 문의</a><a href="#ip" class="btn btn--ghost">특허 · IP 보기 →</a></div>
+    <div class="st stats"><div><b data-count="16" data-decimals="0" data-suffix="건">0건</b><span>특허 등록·출원</span></div><div><b data-count="8" data-decimals="0" data-suffix="건">0건</b><span>상표 등록</span></div><div><b>24-72h</b><span>예측 리드타임</span></div><div><b data-count="5" data-decimals="0" data-suffix="km">0km</b><span>격자 해구 해상도</span></div></div>
+  </div>
+</section>
+<section class="sec"><div class="container">
+  <div data-reveal><div class="eyebrow">01 · MME Weather Engine</div><h2 class="h2">멀티모델 앙상블(MME)<br>기상 예보·관측 시스템</h2><p class="sub">국가별 선진 기상청의 예보 로우데이터와 ECMWF-ERA5 관측 로우데이터를 결합하고, BIAS 오차 보정으로 단일 모델의 한계를 극복합니다.</p></div>
+  <div class="pipe" data-seq data-reveal>
+    <div class="pipe__step"><i>01</i><b>로우데이터 수집</b><span>기상청 · ECMWF</span></div><span class="pipe__arrow">→</span>
+    <div class="pipe__step"><i>02</i><b>해석 · 표준화</b><span>표준 포맷 GRIB</span></div><span class="pipe__arrow">→</span>
+    <div class="pipe__step"><i>03</i><b>편차 추이 분석</b><span>자료 추출</span></div><span class="pipe__arrow">→</span>
+    <div class="pipe__step"><i>04</i><b>MME 모델 보정</b><span>품질 강화</span></div><span class="pipe__arrow">→</span>
+    <div class="pipe__step"><i>05</i><b>신규 모델 생성</b><span>예보 · 관측 API</span></div>
+  </div>
+  <div class="grid grid--3" data-stagger="0.12">
+    <div class="card"><h3 style="margin-top:0;font-size:18px">광역 · 장기 예측</h3><p>MME의 장점인 광범위한 지역과 장기 예측 능력으로 전 세계 초정밀 기상 정보를 생성합니다.</p></div>
+    <div class="card"><h3 style="margin-top:0;font-size:18px">BIAS 오차 보정</h3><p>관측치와 예보치의 편차 추이를 지속 분석해 모델을 보정, 예보 정밀도를 높입니다.</p></div>
+    <div class="card"><h3 style="margin-top:0;font-size:18px">관측자료 아카이빙</h3><p>5년 누적 기상·해양 관측 자료를 표준화 아카이브로 축적 — 재학습과 검증의 자산입니다.</p></div>
+  </div>
+</div></section>
+<section class="sec sec--dark"><div class="container">
+  <div data-reveal><div class="eyebrow">02 · TSF Ecosystem Forecast</div><h2 class="h2">수산생물 생태계 변화<br>시계열 예측 시스템 (TSF)</h2><p class="sub">해구별 수산 생태계 정보의 빅데이터화, 위성 관측 4차원 수괴 정보 생성 기술 기반 — 수산생물 생태계 변화를 시계열로 예측합니다.</p></div>
+  <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:44px;margin-top:44px" class="tsf-grid">
+    <div data-stagger="0.1">
+      <div class="dg__step"><span class="n">1</span><div><b>조과 · 조황 이미지 수집</b><span>사용자 전송 + 3rd Party 크라우드소싱</span></div></div>
+      <div class="dg__step"><span class="n">2</span><div><b>AI 어종 판별</b><span>원본·생성형 AI 활용 이미지 학습, 통합 ML 시스템</span></div></div>
+      <div class="dg__step"><span class="n">3</span><div><b>환경 정보 매칭</b><span>어획 당시 위치의 기상·해양 관측정보 자동 추적</span></div></div>
+      <div class="dg__step"><span class="n">4</span><div><b>5km 격자 빅데이터화</b><span>해구 단위 표준화 데이터셋 저장·아카이빙</span></div></div>
+      <div class="dg__step"><span class="n">5</span><div><b>4차원 수괴 자료 생성</b><span>위성 관측 기반 수괴 단위 4차원 정보</span></div></div>
+      <div class="dg__step"><span class="n">6</span><div><b>시계열 예측</b><span>해양 수산생태계 변화 시계열 예측 모델</span></div></div>
+    </div>
+    <div class="record" data-reveal>
+      <h5>DATA RECORD — 실제 수집 예시</h5>
+      <div class="kv"><b>어종</b><span>돌돔</span></div>
+      <div class="kv"><b>일시</b><span>2023.05.13 13:53</span></div>
+      <div class="kv"><b>위치</b><span>33.929175, 126.324603</span></div>
+      <div class="kv"><b>기온 / 풍향</b><span>12°C / 남동풍</span></div>
+      <div class="kv"><b>풍속 / 돌풍</b><span>5m/s / 8m/s</span></div>
+      <div class="kv"><b>물때 / 파고</b><span>1물 (초들물) / 0.5m</span></div>
+      <div class="kv"><b>수온 / 염분</b><span>17°C / 34.1‰</span></div>
+      <div class="kv"><b>저질</b><span>바위</span></div>
+    </div>
+  </div>
+</div></section>
+<section class="sec"><div class="container">
+  <div data-reveal><div class="eyebrow">03 · Activity Index</div><h2 class="h2">테마별 활동지수 알고리즘</h2><p class="sub">기상·해양 요소를 레저스포츠 종목별 가중치로 결합해, 오늘 바다에 나가도 되는지를 하나의 지수로 답합니다.</p></div>
+  <div class="formula" data-reveal>
+    <div class="fx">Activity Index (AI) = W₁·S₁ + W₂·S₂ + W₃·S₃ + ⋯ + Wₙ·Sₙ</div>
+    <p>Sₙ — 각 요소의 점수 (0–10) · 레저스포츠 종별 변수 범위에 따른 점수 산정<br>Wₙ — 각 요소의 가중치 · 레저스포츠 종목별 조정</p>
+  </div>
+  <div class="factors" data-stagger="0.12">
+    <div class="fbox"><h4>기상요소</h4>
+      <div class="chips" style="margin-top:16px"><span class="chip">기온</span><span class="chip">강수량</span><span class="chip">풍속</span><span class="chip">풍향</span><span class="chip">습도</span><span class="chip">기압</span></div>
+    </div>
+    <div class="fbox"><h4>해양요소</h4>
+      <div class="frow"><b>물리적</b><span>수온 · 염분 · 해류 · 조석 · 파도</span></div>
+      <div class="frow"><b>화학적</b><span>용존 산소 · pH · 이산화탄소 · 영양염 · 해양 오염</span></div>
+      <div class="frow"><b>생물학적</b><span>플랑크톤 · 어류 · 해조류 · 산호초 · 해양 포유류 · 생태계</span></div>
+      <div class="frow"><b>기상적</b><span>태풍 · 해무 · 해빙 · 기압 변화</span></div>
+      <div class="frow"><b>지질적</b><span>암반 · 자갈 · 모래 · 실트 · 진흙 · 산호 · 조개껍질</span></div>
+    </div>
+  </div>
+</div></section>
+<section class="sec sec--dark"><div class="container">
+  <div data-reveal><div class="eyebrow">04 · System Architecture</div><h2 class="h2">서비스를 움직이는 레이어드 시스템</h2><p class="sub">사용자 접점부터 AI/ML, 클라우드 인프라까지 — 데이터 기반 적응형 게이미피케이션을 포함한 확장형 아키텍처.</p></div>
+  <div class="grid grid--5" data-stagger="0.1" style="gap:14px">
+    <div class="card" style="padding:24px"><span class="badge">L1</span><h3 style="font-size:16px">사용자 접점</h3><p style="font-size:12.5px">Flutter — 퀘스트 · 도감/배지 · 리더보드 · 레벨/보상 UI</p></div>
+    <div class="card" style="padding:24px"><span class="badge">GW</span><h3 style="font-size:16px">API Gateway</h3><p style="font-size:12.5px">인증 · 라우팅 · 트래픽 관리 · 로드밸런싱 (REST/WebSocket)</p></div>
+    <div class="card" style="padding:24px"><span class="badge">L2</span><h3 style="font-size:16px">코어 엔진</h3><p style="font-size:12.5px">게이미피케이션 · 소셜 랭킹 · 보상 · Kafka 이벤트 스트리밍</p></div>
+    <div class="card" style="padding:24px"><span class="badge">L3</span><h3 style="font-size:16px">AI / ML 레이어</h3><p style="font-size:12.5px">AI 퀘스트 생성 · 어종 인식(CNN·TFLite) · 행동 예측</p></div>
+    <div class="card" style="padding:24px"><span class="badge">L4</span><h3 style="font-size:16px">데이터 레이어</h3><p style="font-size:12.5px">AWS — PostgreSQL · Redis · MongoDB · S3 · SageMaker</p></div>
+  </div>
+</div></section>
+<section class="sec" id="ip"><div class="container">
+  <div data-reveal><div class="eyebrow">05 · IP &amp; Certification</div><h2 class="h2">기술을 증명하는 자산</h2></div>
+  <div class="grid grid--4" data-stagger="0.1">
+    <div class="card"><b class="num" style="font-size:32px">3건</b><h3 style="font-size:17px;margin-top:8px">특허 등록</h3><p style="font-size:13px">머신러닝·빅데이터 낚시 안내 시스템 등 국내 등록</p></div>
+    <div class="card"><b class="num" style="font-size:32px">12건+</b><h3 style="font-size:17px;margin-top:8px">특허 출원</h3><p style="font-size:13px">MME 기상 예보 분석, 수산생물 활성도 시계열 예측 등</p></div>
+    <div class="card"><b class="num" style="font-size:32px">1건</b><h3 style="font-size:17px;margin-top:8px">해외 등록 (일본)</h3><p style="font-size:13px">머신러닝 및 빅데이터 낚시 안내 시스템 JP 등록</p></div>
+    <div class="card"><b class="num" style="font-size:32px">8건</b><h3 style="font-size:17px;margin-top:8px">상표 등록</h3><p style="font-size:13px">어신 · HarborX · BlueMatrix · Fuler 등</p></div>
+  </div>
+  <div class="card" style="margin-top:24px;padding:14px 32px" data-reveal>
+    <div class="record" style="border:0;background:none;padding:12px 0">
+      <div class="kv" style="border-color:var(--line)"><b style="color:var(--acc);min-width:190px">등록 제10-2176803호</b><span style="color:var(--ink2)">머신러닝 및 빅데이터 시스템을 이용한 낚시 안내 방법, 서버 및 시스템</span></div>
+      <div class="kv" style="border-color:var(--line)"><b style="color:var(--acc);min-width:190px">등록 제10-2114543호</b><span style="color:var(--ink2)">수중 생물의 활성도 예측 방법</span></div>
+      <div class="kv" style="border-color:var(--line)"><b style="color:var(--acc);min-width:190px">출원 10-2025-0019133</b><span style="color:var(--ink2)">MME 기반 기상 예보 관측 시스템을 이용한 해양 레저 관광 활동 지수 분석 방법 및 시스템</span></div>
+      <div class="kv" style="border-color:var(--line)"><b style="color:var(--acc);min-width:190px">출원 10-2025-0019136</b><span style="color:var(--ink2)">ML 및 빅데이터 기반 수산생물 서식지 및 활성도를 시계열적으로 예측하는 방법 및 시스템</span></div>
+      <div class="kv" style="border-color:var(--line)"><b style="color:var(--acc);min-width:190px">해외등록 JP2022-574290</b><span style="color:var(--ink2)">머신러닝 및 빅데이터 시스템을 이용한 낚시 안내 방법, 서버 및 시스템 (일본)</span></div>
+    </div>
+  </div>
+  <div class="chips" data-stagger="0.06">
+    <span class="chip">기상사업자 등록 (기상청)</span><span class="chip">GS인증 1등급</span><span class="chip">ISO 27001</span><span class="chip">해양수산부 혁신기업</span><span class="chip">혁신 프리미어 1000</span>
+  </div>
+</div></section><section class="cta"><div class="container">
+  <div class="cta__panel" data-reveal>
+    <h2>기술 도입과 공동 연구를 논의해보세요</h2><p>R&amp;D 협력, 기술이전, API 연동 — KIOST·국립수산과학원과 함께한 경험으로 제안드립니다.</p>
+    <div class="hero__cta"><a href="contact.html" class="btn btn--white">기술 도입 문의</a><a href="mailto:dh@sgma.io" class="btn btn--ghost">dh@sgma.io</a></div>
+  </div>
+</div></section><footer class="footer">
+  <div class="container">
+    <div class="footer__cols">
+      <div>
+        <div class="footer__logo">SGMA</div>
+        <p>지구온난화에 대응하는 지속 가능한 해양·수산 산업 솔루션<br>기상 및 수산 생태계 분석 GEO TECH 기업</p>
+        <small>㈜애쓰지마 (SGMA Corp.)  |  대표이사 임동현<br>본점  광주광역시 북구 자미로6번길 45, 빛고을 창업스테이션 514호<br>기업부설연구소  제주특별자치도 제주시 제주대학로 29, 1층 102호<br>E. <a href="mailto:dh@sgma.io">dh@sgma.io</a></small>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <ul>
+          <li><a href="yeosin.html">어신 앱</a></li>
+          <li><a href="partners.html">어신 파트너스</a></li>
+          <li><a href="fuler.html">Fuler</a></li>
+          <li><a href="bluematrix.html">BlueMatrix</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="technology.html">Technology</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bar">
+      <span>© <b data-year>2026</b> SGMA Corp. All rights reserved.</span>
+      <span>Instagram · YouTube · Blog</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script></body></html>

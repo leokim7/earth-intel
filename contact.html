@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — SGMA</title>
+<meta name="description" content="서비스 도입, 파트너 입점, 기술 협력, 투자 — 영업일 기준 24시간 내 회신드립니다">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body><header class="nav">
+  <div class="nav__in">
+    <a href="index.html" class="nav__logo">SGMA</a>
+    <button class="nav__burger" aria-label="menu"><span></span><span></span><span></span></button>
+    <ul class="nav__menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li class="dd"><a href="#" aria-haspopup="true">Service <svg class="caret" viewBox="0 0 9 6"><path d="M0 0l4.5 6L9 0z"/></svg></a>
+        <div class="dd__panel">
+          <a class="dd__item" href="yeosin.html"><b><i></i>어신 앱</b><span>B2C 해양 내비게이터 — 낚시 지수 · 입질확률 · 물때</span></a>
+          <a class="dd__item" href="partners.html"><b><i></i>어신 파트너스</b><span>선상낚시 · 해양레저 업체 제휴 플랫폼</span></a>
+          <a class="dd__item" href="fuler.html"><b><i></i>Fuler</b><span>글로벌 AI 어종 인식 · 어획 기록</span></a>
+          <a class="dd__item" href="bluematrix.html"><b><i></i>BlueMatrix</b><span>B2B · B2G 기상 · 해양 데이터 플랫폼</span></a>
+        </div>
+      </li>
+      <li><a href="technology.html">Technology</a></li>
+      <li><a href="contact.html" class="btn btn--pri nav__cta">Contact Us</a></li>
+    </ul>
+  </div>
+</header>
+<section class="hero">
+  <div class="hero__bg" style="background-image:url('assets/img/hero-contact.jpg')"></div>
+  <div class="hero__dim"></div>
+  <div class="hero__in" style="padding:96px 32px 72px">
+    <div class="st eyebrow" style="color:#aab3ff">Contact Us</div>
+    <h1 class="st" style="font-size:clamp(30px,4vw,48px)">무엇을 도와드릴까요?</h1>
+    <p class="st sub">서비스 도입, 파트너 입점, 기술 협력, 투자 — 어떤 문의든 영업일 기준 24시간 내에 회신드립니다.</p>
+  </div>
+</section>
+<section class="sec" style="padding-top:72px"><div class="container">
+  <div class="contact">
+    <div data-stagger="0.1">
+      <div class="info-card"><h5>EMAIL</h5><b>dh@sgma.io</b><span>모든 문의의 기본 채널 — 영업일 기준 24시간 내 회신</span></div>
+      <div class="info-card"><h5>본점</h5><b>광주광역시 북구 자미로6번길 45</b><span>빛고을 창업스테이션 514호</span></div>
+      <div class="info-card"><h5>기업부설연구소</h5><b>제주특별자치도 제주시 제주대학로 29</b><span>1층 102호</span></div>
+      <div class="info-card"><h5>문의 유형</h5><b>서비스 도입 · API/데이터 · 파트너 입점</b><span>기술협력/R&amp;D · 투자/IR · 기타</span></div>
+    </div>
+    <form class="form" data-reveal action="mailto:dh@sgma.io" method="post" enctype="text/plain">
+      <h3>문의하기</h3>
+      <div class="row">
+        <div class="field"><label>이름 <em>*</em></label><input type="text" name="name" placeholder="성함을 입력해주세요" required></div>
+        <div class="field"><label>회사 · 소속</label><input type="text" name="company" placeholder="회사명 (선택)"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>이메일 <em>*</em></label><input type="email" name="email" placeholder="name@company.com" required></div>
+        <div class="field"><label>연락처</label><input type="tel" name="phone" placeholder="010-0000-0000 (선택)"></div>
+      </div>
+      <div class="field"><label>문의 유형 <em>*</em></label>
+        <select name="type" required>
+          <option value="">선택해주세요</option>
+          <option>서비스 도입</option><option>API · 데이터</option><option>파트너 입점</option>
+          <option>기술협력 · R&amp;D</option><option>투자 · IR</option><option>기타</option>
+        </select>
+      </div>
+      <div class="field"><label>문의 내용 <em>*</em></label><textarea name="message" placeholder="문의하실 내용을 자세히 적어주세요." required></textarea></div>
+      <label class="agree"><input type="checkbox" required> (필수) 개인정보 수집·이용에 동의합니다 — 문의 응대 목적으로만 사용 후 파기됩니다.</label>
+      <button type="submit" class="btn btn--pri">문의 보내기</button>
+    </form>
+  </div>
+</div></section><footer class="footer">
+  <div class="container">
+    <div class="footer__cols">
+      <div>
+        <div class="footer__logo">SGMA</div>
+        <p>지구온난화에 대응하는 지속 가능한 해양·수산 산업 솔루션<br>기상 및 수산 생태계 분석 GEO TECH 기업</p>
+        <small>㈜애쓰지마 (SGMA Corp.)  |  대표이사 임동현<br>본점  광주광역시 북구 자미로6번길 45, 빛고을 창업스테이션 514호<br>기업부설연구소  제주특별자치도 제주시 제주대학로 29, 1층 102호<br>E. <a href="mailto:dh@sgma.io">dh@sgma.io</a></small>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <ul>
+          <li><a href="yeosin.html">어신 앱</a></li>
+          <li><a href="partners.html">어신 파트너스</a></li>
+          <li><a href="fuler.html">Fuler</a></li>
+          <li><a href="bluematrix.html">BlueMatrix</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="technology.html">Technology</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bar">
+      <span>© <b data-year>2026</b> SGMA Corp. All rights reserved.</span>
+      <span>Instagram · YouTube · Blog</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script></body></html>

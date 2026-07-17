@@ -6,7 +6,6 @@ frontend:
   artifacts:
     baseDirectory: /
     files:
-      - 'index.html'
-      - 'assets/**/*'
+      - '**/*'
   cache:
     paths: []

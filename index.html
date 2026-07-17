@@ -2,1009 +2,137 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SGMA — Earth Intelligence Platform</title>
-<meta name="description" content="SGMA는 글로벌 기상·해양·농수산·위성·우주 데이터를 통합하여 산업과 공공 분야에 실시간 모니터링, 24~72시간 예측, 실행 가이드를 제공하는 Earth Intelligence Platform입니다.">
-<style>
-  @font-face{font-family:"Pretendard Variable";src:url("assets/fonts/PretendardVariable.woff2") format("woff2-variations");font-weight:45 920;font-display:swap}
-  @font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-400-normal.woff2") format("woff2");font-weight:400;font-display:swap}
-  @font-face{font-family:"Inter";src:url("assets/fonts/inter-latin-800-normal.woff2") format("woff2");font-weight:800;font-display:swap}
-  :root{
-    --bg:#0b0d20; --card:#232536; --blue:#1c24ea; --blue2:#133ee9; --blue3:#0d55e8; --blue4:#017be6;
-    --light:#f7f8fc; --ink:#0b0d20; --red:#ff3b30; --footer:#080c18;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    background:var(--bg); color:#fff;
-    font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Malgun Gothic",sans-serif;
-    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-  }
-  img{display:block}
-  .artboard{position:relative;width:1440px;height:8518px;margin:0 auto;overflow:hidden;background:var(--bg)}
-  @media (max-width:1439px){ body{overflow-x:auto} }
-  .abs{position:absolute}
-  .cx{left:50%;transform:translateX(-50%)}
-
-  /* ---------- reveal / animations ---------- */
-  .rv{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1)}
-  .rv.on{opacity:1;transform:none}
-  .rv.cx{transform:translateX(-50%) translateY(28px)}
-  .rv.cx.on{transform:translateX(-50%) translateY(0)}
-  .rv-fade{opacity:0;transition:opacity 1.2s ease}
-  .rv-fade.on{opacity:1}
-  @media (prefers-reduced-motion:reduce){
-    .rv,.rv-fade{transition:none;opacity:1;transform:none}
-    .rv.cx{transform:translateX(-50%)}
-    *{animation-duration:.01ms !important;animation-iteration-count:1 !important}
-  }
-
-  /* ---------- Nav ---------- */
-  nav{
-    position:fixed;top:0;left:0;right:0;z-index:100;height:72px;min-width:1280px;
-    display:flex;align-items:center;justify-content:center;
-    background:rgba(255,255,255,.05);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-    transition:background .4s ease;
-  }
-  nav.scrolled{background:rgba(11,13,32,.72)}
-  .nav-inner{width:1200px;max-width:1280px;display:flex;align-items:center;justify-content:space-between}
-  .nav-logo{font-weight:800;font-size:26px;letter-spacing:-.52px;line-height:1.4;color:#fff;text-decoration:none;cursor:pointer}
-  .nav-menu{display:flex;gap:20px;align-items:center}
-  .nav-link{
-    padding:10px;font-weight:600;font-size:16px;letter-spacing:-.32px;line-height:1.4;color:#fff;
-    text-decoration:none;cursor:pointer;transition:opacity .25s;opacity:1;background:none;border:none;font-family:inherit;
-  }
-  .nav-link.dim{color:rgba(255,255,255,.88)}
-  .nav-link:hover{opacity:.7}
-  .nav-cta{
-    padding:10px 20px;border-radius:10px;background:rgba(255,255,255,.1);
-    border:.7px solid rgba(229,231,235,.1);color:#fff;font-weight:600;font-size:16px;letter-spacing:-.32px;line-height:1.4;
-    cursor:pointer;font-family:inherit;transition:background .25s,transform .25s;
-  }
-  .nav-cta:hover{background:rgba(255,255,255,.2);transform:translateY(-1px)}
-
-  /* ---------- Hero ---------- */
-  .hero-bg{left:50%;top:0;width:1442px;height:811px;margin-left:-721px;overflow:hidden}
-  .hero-bg img{width:100%;height:100%;object-fit:cover;animation:kenburns 22s ease-in-out infinite alternate;transform-origin:50% 30%}
-  @keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.07)}}
-  .hero-bg .shade{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(11,13,32,0) 85.45%,#0b0d20 100%)}
-  .hero-in{opacity:0;transform:translateY(26px);animation:heroIn 1s cubic-bezier(.22,.61,.36,1) forwards;animation-delay:var(--hd,0s)}
-  .hero-in.cx{transform:translateX(-50%) translateY(26px);animation-name:heroInCx}
-  @keyframes heroIn{to{opacity:var(--o,1);transform:translateY(0)}}
-  @keyframes heroInCx{to{opacity:var(--o,1);transform:translateX(-50%) translateY(0)}}
-  .hero-title{top:146px;font-weight:700;font-size:46px;line-height:1.3;letter-spacing:-3px;text-align:center;white-space:nowrap}
-  .hero-sub{top:286px;font-weight:500;font-size:16px;line-height:1.4;letter-spacing:-.32px;text-align:center;white-space:nowrap;--o:.6}
-  .hero-btns{top:360px;display:flex;gap:20px}
-  .glass-btn{
-    display:flex;align-items:center;justify-content:center;padding:14px 24px;border-radius:10px;
-    background:rgba(255,255,255,.1);border:.7px solid rgba(229,231,235,.1);
-    backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
-    color:#fff;font-weight:600;font-size:16px;letter-spacing:-.32px;line-height:1.4;
-    cursor:pointer;font-family:inherit;transition:background .3s,transform .3s,box-shadow .3s;text-decoration:none;
-  }
-  .glass-btn:hover{background:rgba(255,255,255,.2);transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.35)}
-  .scroll-pin{left:711px;top:695px;width:18px;height:60px}
-  .scroll-pin img{animation:pinFloat 2.4s ease-in-out infinite}
-  @keyframes pinFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
-  .scroll-txt{top:763px;font-weight:500;font-size:18px;line-height:18px;letter-spacing:-.36px;color:rgba(255,255,255,.65)}
-  .stat-num{font-weight:700;font-size:42px;line-height:48px;letter-spacing:-1px;color:#fff;white-space:nowrap}
-  .stat-lbl{font-weight:500;font-size:16px;line-height:18px;letter-spacing:-.32px;color:rgba(255,255,255,.65);white-space:nowrap}
-  .img9{left:50%;top:953px;width:1442px;height:460px;margin-left:-721px;opacity:.1;transform:rotate(180deg);overflow:hidden}
-  .img9 img{width:100%;height:100%;object-fit:cover;object-position:bottom}
-  .img9 .shade{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(11,13,32,0) 55.3%,#0b0d20 100%)}
-
-  /* ---------- Section label pill ---------- */
-  .pill{
-    display:inline-flex;align-items:center;justify-content:center;padding:14px 20px;border-radius:999px;
-    background:rgba(255,255,255,.1);font-weight:600;font-size:14px;color:#fff;white-space:pre;line-height:normal;
-  }
-  .pill.blue{background:rgba(28,36,234,.1);color:var(--blue)}
-
-  /* ---------- About ---------- */
-  .h2-46{font-weight:700;font-size:46px;line-height:1.3;letter-spacing:-3px;white-space:nowrap}
-  .about-cards{left:657px;top:1153px;display:flex;gap:30px;align-items:center}
-  .p-card{position:relative;width:300px;height:400px;border-radius:20px;overflow:hidden;flex-shrink:0;
-    display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;gap:10px;padding:30px;
-    transition:transform .5s cubic-bezier(.22,.61,.36,1),box-shadow .5s,opacity .8s cubic-bezier(.22,.61,.36,1)}
-  .p-card:hover{transform:translateY(-8px);box-shadow:0 24px 60px rgba(0,0,0,.45)}
-  .p-card .ph{position:absolute;z-index:0}
-  .p-card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.22,.61,.36,1)}
-  .p-card:hover .ph img{transform:scale(1.05)}
-  .p-card .ph .shade{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(11,13,32,0) 55.5%,rgba(11,13,32,.8) 100%)}
-  .p-card .cap{position:relative;z-index:1;font-weight:600;font-size:24px;line-height:1.4;letter-spacing:-.48px;white-space:nowrap}
-  .body-16{font-weight:500;font-size:16px;line-height:1.4;letter-spacing:-.32px}
-  .kstat .k-lbl{font-weight:400;font-size:14px;line-height:1.45;opacity:.8}
-  .kstat .k-num{font-weight:800;font-size:44px;line-height:52px;letter-spacing:-1px;white-space:nowrap}
-  .kstat .k-desc{font-weight:400;font-size:14px;line-height:1.45;opacity:.8;width:280px}
-  .kstat{display:flex;flex-direction:column;gap:11px;width:455px}
-  .kstat .row{display:flex;align-items:flex-end}
-  .hline{height:1px;background:rgba(255,255,255,.2)}
-  .vline-blue{width:1px;background:linear-gradient(to bottom,rgba(28,36,234,0),#1c24ea 50%,rgba(28,36,234,0))}
-  .hline-blue{height:1px;background:linear-gradient(to right,rgba(28,36,234,0),#1c24ea 50%,rgba(28,36,234,0))}
-
-  /* ---------- Architecture ---------- */
-  .arch-cta{
-    display:inline-flex;align-items:center;justify-content:center;padding:20px 30px;border-radius:999px;
-    background:rgba(28,36,234,.1);border:1px solid var(--blue);
-    backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
-    font-weight:700;font-size:24px;line-height:1.4;color:var(--blue);white-space:nowrap;
-    box-shadow:0 0 70px rgba(28,36,234,.4);
-  }
-  .bracket{left:304px;top:2293px;width:838px;height:109px}
-  .arch-vline{left:717px;top:2305px;width:6px;height:97px;background:linear-gradient(to bottom,#1c24ea,rgba(28,36,234,0))}
-  .l-card{
-    position:absolute;top:2402px;width:370px;padding:30px;border-radius:16px;background:rgba(255,255,255,.1);
-    display:flex;flex-direction:column;gap:20px;align-items:flex-start;
-    filter:drop-shadow(0 4px 6px rgba(10,31,69,.06));
-    transition:transform .5s cubic-bezier(.22,.61,.36,1),background .5s,opacity .8s cubic-bezier(.22,.61,.36,1);
-  }
-  .l-card:hover{transform:translateY(-8px);background:rgba(255,255,255,.14)}
-  .l-badge-row{display:flex;gap:14px;align-items:center}
-  .l-badge{width:48px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:var(--blue);
-    font-weight:700;font-size:14px;padding-bottom:1px}
-  .l-layer{font-weight:600;font-size:16px;line-height:1.4;letter-spacing:-.32px;opacity:.7;white-space:nowrap}
-  .l-title{font-weight:700;font-size:24px;line-height:1.4;letter-spacing:-.48px;white-space:nowrap}
-  .l-desc{font-weight:400;font-size:16px;line-height:1.4;opacity:.6}
-  .l-list{display:flex;flex-direction:column;gap:10px}
-  .l-item{display:flex;gap:10px;align-items:center;font-weight:500;font-size:14px;line-height:1.4;letter-spacing:-.28px;white-space:nowrap}
-  .l-dot{width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0}
-  .l-div{height:1px;background:rgba(255,255,255,.3);opacity:.5;width:100%}
-  .l-foot-num{font-weight:700;font-size:32px;line-height:36px;letter-spacing:-.64px;white-space:nowrap}
-  .l-foot-lbl{font-weight:500;font-size:14px;letter-spacing:-.28px;opacity:.7;margin-top:10px;white-space:nowrap}
-
-  /* ---------- Track record / products ---------- */
-  .h2-46xb{font-weight:800;font-size:46px;line-height:1.3;letter-spacing:-1.5px}
-  .prod-card{
-    position:absolute;left:120px;width:1200px;padding:30px;border-radius:20px;background:rgba(255,255,255,.1);
-    backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);
-    display:flex;gap:30px;align-items:center;justify-content:center;
-    transition:transform .5s cubic-bezier(.22,.61,.36,1),background .5s,opacity .8s cubic-bezier(.22,.61,.36,1);
-  }
-  .prod-card:hover{transform:translateY(-6px);background:rgba(255,255,255,.13)}
-  .g-wrap{position:relative;width:380px;height:210px;flex-shrink:0}
-  .g-bg{position:absolute;inset:0;background:var(--card);border-radius:16px}
-  .prod-body{align-self:stretch;display:flex;flex-direction:column;justify-content:space-between;flex:1}
-  .prod-tag-row{display:flex;gap:14px;align-items:center}
-  .prod-tag{height:24px;display:flex;align-items:center;justify-content:center;padding:4px 16px;border-radius:12px;background:var(--blue);
-    font-weight:600;font-size:14px;letter-spacing:-.28px;white-space:nowrap}
-  .prod-date{font-weight:600;font-size:14px;letter-spacing:-.28px;white-space:nowrap}
-  .prod-title{font-weight:700;font-size:30px;line-height:1.3;letter-spacing:-.6px}
-  .prod-desc{font-weight:400;font-size:16px;line-height:1.4;width:730px}
-  .prod-div{height:1px;background:rgba(255,255,255,.3);opacity:.5;width:100%}
-  .prod-stats{display:flex;align-items:center}
-  .ps{display:flex;flex-direction:column;gap:5px}
-  .ps .a{font-weight:500;font-size:11px;letter-spacing:-.22px;white-space:nowrap}
-  .ps .b{font-weight:700;font-size:18px;line-height:1.3;letter-spacing:-.36px;white-space:nowrap}
-
-  /* graphic 1 — 어신 */
-  .g1-card{position:absolute;left:80px;top:25px;width:220px;height:160px;background:#fff;border-radius:18px}
-  .g1-pill{position:absolute;left:92px;top:39px;width:196px;height:32px;border-radius:999px;background:rgba(11,13,32,.1);
-    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;letter-spacing:-.28px;color:var(--ink)}
-  .g1-score{position:absolute;left:92px;top:85px;width:196px;text-align:center;font-family:Inter,sans-serif;font-weight:800;font-size:48px;line-height:54px;color:var(--blue)}
-  .g1-cap{position:absolute;left:92px;top:143px;width:196px;text-align:center;font-weight:500;font-size:14px;color:var(--ink);white-space:nowrap}
-  /* graphic 2 — 커머스 */
-  .g2-item{position:absolute;top:17px;width:140px;height:175px;background:#fff;border-radius:10px}
-  .g2-strip-r{position:absolute;left:345px;top:17px;width:35px;height:175px;border-radius:10px 0 0 10px;background:linear-gradient(to right,rgba(255,255,255,.5),rgba(255,255,255,.2))}
-  .g2-strip-l{position:absolute;left:0;top:17px;width:35px;height:175px;border-radius:0 10px 10px 0;background:linear-gradient(to left,rgba(255,255,255,.5),rgba(255,255,255,.2))}
-  .g2-img{position:absolute;top:30px;width:97px;height:97px;object-fit:cover}
-  .g2-name{position:absolute;font-weight:500;font-size:14px;letter-spacing:-.28px;color:#0a1f44;white-space:nowrap}
-  .g2-price{position:absolute;font-weight:800;font-size:14px;letter-spacing:-.28px;color:#0a1f44;white-space:nowrap}
-  /* graphic 3 — Fuler */
-  .g3-wrap{width:374px;overflow:hidden;border-radius:16px}
-  .g3-fish{position:absolute;left:74px;top:24px;width:224px;height:134px;overflow:hidden;display:flex;align-items:center;justify-content:center}
-  .g3-fish img{width:230px;height:230px;object-fit:cover;flex-shrink:0}
-  .g3-target{position:absolute;left:77px;top:32px;width:218px;height:118px;display:flex;align-items:center;justify-content:center}
-  .g3-target img{width:218px;height:118px}
-  .g3-size{position:absolute;left:117px;top:164px;display:flex;gap:4px;align-items:center;justify-content:center;
-    padding:1px 8px 1px 2px;border-radius:99px;background:rgba(167,0,39,.7);white-space:nowrap}
-  .g3-size img{width:18px;height:18px}
-  .g3-size span{font-weight:400;font-size:14px;line-height:1.45;color:#fff}
-  /* graphic 4 — BlueMatrix chart */
-  .g4-chart{position:absolute;left:19px;top:27px;width:342px;height:157px;background:#fff;border:1px solid #e2e8f0;border-radius:12px}
-  .g4-bar{position:absolute;width:38px;border-radius:4px;background:var(--blue);transform-origin:bottom;transform:scaleY(0);transition:transform .9s cubic-bezier(.22,.61,.36,1);transition-delay:var(--d,0s)}
-  .on .g4-bar{transform:scaleY(1)}
-  .g4-hr{position:absolute;font-family:Inter,sans-serif;font-weight:400;font-size:8px;color:#94a3b8;white-space:nowrap}
-  .g4-live{position:absolute;left:37px;top:41px;display:flex;gap:4px;align-items:center;padding:6px 10px;border-radius:999px;background:rgba(255,59,48,.1)}
-  .g4-live .dot{width:6px;height:6px;border-radius:50%;background:var(--red);animation:pulse 1.6s ease-in-out infinite}
-  @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(255,59,48,.5)}50%{opacity:.55;box-shadow:0 0 0 5px rgba(255,59,48,0)}}
-  .g4-live span{font-weight:600;font-size:12px;color:var(--red);line-height:normal;white-space:nowrap}
-
-  /* ---------- Vision (light) ---------- */
-  .vision{left:50%;top:4646px;width:1440px;margin-left:-720px;height:755px;background:var(--light);padding:110px 120px;
-    display:flex;flex-direction:column;gap:80px;align-items:flex-start}
-  .vision .head{display:flex;align-items:flex-end;justify-content:space-between;width:100%}
-  .vision h2{font-weight:700;font-size:46px;line-height:1.3;letter-spacing:-.92px;color:var(--ink);white-space:nowrap}
-  .vision .lead{font-weight:500;font-size:16px;line-height:1.4;letter-spacing:-.32px;color:var(--ink);opacity:.7;white-space:nowrap}
-  .vision .big{font-family:Inter,sans-serif;font-weight:800;font-size:200px;line-height:200px;letter-spacing:-6px;color:var(--blue);white-space:nowrap}
-  .v-cards{display:flex;gap:30px;align-items:center}
-  .v-card{position:relative;width:380px;height:170px;background:#fff;border-radius:20px;overflow:hidden;
-    padding:36px 30px;display:flex;align-items:center;justify-content:space-between;
-    transition:transform .5s cubic-bezier(.22,.61,.36,1),box-shadow .5s,opacity .8s cubic-bezier(.22,.61,.36,1)}
-  .v-card:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(10,31,69,.12)}
-  .v-card .icon{position:absolute;left:230px;top:20px;width:140px;height:140px}
-  .v-card .txt{position:relative;width:180px;display:flex;flex-direction:column;gap:16px;color:var(--ink)}
-  .v-card .t{font-weight:700;font-size:30px;line-height:32px;letter-spacing:-.6px}
-  .v-card .s{font-weight:500;font-size:16px;line-height:1.4;letter-spacing:-.32px;opacity:.6}
-  .v-card .s.sm{font-size:14px;letter-spacing:-.28px}
-  .v-card .n{position:relative;font-weight:800;font-size:40px;line-height:48px;letter-spacing:-1px;color:var(--blue);text-align:right;white-space:nowrap}
-
-  /* ---------- Time horizon ---------- */
-  .cover-bg{left:50%;top:5588px;width:1440px;height:1920px;margin-left:-720px;display:flex;align-items:center;justify-content:center;pointer-events:none}
-  .cover-bg img{width:1920px;height:1440px;transform:rotate(-90deg);flex-shrink:0}
-  .th-title{font-weight:700;font-size:46px;line-height:1.3;letter-spacing:-.92px;text-align:center}
-  .spectrum{left:120px;top:5848px;width:1200px;height:8px;border-radius:999px;overflow:hidden;transform-origin:left;transform:scaleX(0);transition:transform 1.2s cubic-bezier(.22,.61,.36,1)}
-  .spectrum.on{transform:scaleX(1)}
-  .spectrum img{width:100%;height:100%;object-fit:cover}
-  .th-cards{left:120px;top:5911px;width:1200px;display:flex;gap:20px;align-items:stretch}
-  .th-card{flex:1 0 0;min-width:1px;padding:30px;border-radius:20px;display:flex;flex-direction:column;gap:22px;justify-content:center;
-    transition:transform .5s cubic-bezier(.22,.61,.36,1),opacity .8s cubic-bezier(.22,.61,.36,1)}
-  .th-card:hover{transform:translateY(-8px)}
-  .th-card .range{font-weight:600;font-size:18px;line-height:24px}
-  .th-card .name{font-weight:700;font-size:24px;line-height:1.4;letter-spacing:-.48px}
-  .th-card .div{height:1px;background:#e2e8f0;opacity:.3;width:100%}
-  .th-card .grp{display:flex;flex-direction:column;gap:10px}
-  .th-card .cap{font-weight:700;font-size:14px}
-  .th-card .val{font-weight:500;font-size:18px;line-height:1.4;letter-spacing:-.36px}
-  .th-card .cases{display:flex;flex-direction:column;gap:4px;font-weight:500;font-size:18px;line-height:1.4;letter-spacing:-.36px}
-  .th-c1{background:linear-gradient(to bottom,rgba(255,255,255,.1),rgba(27,36,234,.1))}
-  .th-c2{background:linear-gradient(to bottom,rgba(255,255,255,.1),rgba(19,62,233,.1))}
-  .th-c3{background:linear-gradient(to bottom,rgba(255,255,255,.1),rgba(13,85,232,.1))}
-  .th-c4{background:linear-gradient(to bottom,rgba(255,255,255,.1),rgba(1,123,230,.1))}
-
-  /* ---------- Future vision / industries ---------- */
-  .ind-grid{left:344px;top:6714px;width:960px;height:630px;display:flex;gap:30px}
-  .icol{width:300px;height:630px;display:flex;flex-direction:column;gap:30px;justify-content:flex-end;flex-shrink:0}
-  .i-card{position:relative;width:300px;height:300px;flex-shrink:0;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;
-    align-items:flex-end;justify-content:flex-end;padding:30px 24px;cursor:pointer;
-    transition:height .55s cubic-bezier(.33,1,.36,1),transform .8s cubic-bezier(.22,.61,.36,1),opacity .8s cubic-bezier(.22,.61,.36,1)}
-  @media (min-width:769px){
-    .i-card:hover{height:434px}
-    .icol:has(> .i-card:first-child:hover) > .i-card:last-child:not(:hover),
-    .icol:has(> .i-card:last-child:hover) > .i-card:first-child:not(:hover){height:166px}
-    .icol:has(> .i-card:hover) > .i-card:not(:hover) .s{opacity:0;max-height:0;margin-top:0}
-  }
-  .i-card .ph{position:absolute;z-index:0}
-  .i-card .ph img{width:100%;height:100%;object-fit:cover}
-  .i-card .ph .shade{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(35,37,54,.3) 4%,#232536 94%)}
-  .i-card .t{position:relative;z-index:1;font-weight:700;font-size:28px;line-height:36px;letter-spacing:-.56px;text-align:right;white-space:nowrap}
-  .i-card .s{position:relative;z-index:1;font-weight:500;font-size:18px;line-height:1.4;letter-spacing:-.36px;text-align:right;opacity:.8;
-    margin-top:20px;max-height:60px;overflow:hidden;
-    transition:opacity .35s ease,max-height .5s cubic-bezier(.33,1,.36,1),margin-top .5s cubic-bezier(.33,1,.36,1)}
-
-  /* ---------- Partners ---------- */
-  .partners{left:50%;top:7508px;width:1440px;margin-left:-720px;height:665px;background:var(--light);
-    padding:110px 0 160px;display:flex;flex-direction:column;gap:80px;align-items:center;justify-content:center}
-  .partners .head{width:552px;display:flex;flex-direction:column;gap:24px;align-items:center}
-  .partners h2{font-weight:700;font-size:46px;line-height:1.3;letter-spacing:-.92px;color:var(--ink);text-align:center}
-  .partners .lead{font-weight:500;font-size:16px;line-height:1.4;letter-spacing:-.32px;color:var(--ink);opacity:.7;text-align:center}
-  .marquee{width:1440px;overflow:hidden}
-  .marquee-track{display:flex;gap:30px;width:max-content;animation:marquee 32s linear infinite}
-  .marquee:hover .marquee-track{animation-play-state:paused}
-  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 15px))}}
-  .logo-card{width:300px;height:140px;background:#fff;border-radius:20px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-  .logo-card img{width:160px;height:51.2px;object-fit:contain}
-
-  /* ---------- Footer ---------- */
-  footer{position:absolute;left:50%;top:8232px;width:1440px;margin-left:-720px;height:286px;background:var(--footer);
-    padding:45px 120px;display:flex;flex-direction:column;gap:20px;align-items:flex-start}
-  .f-top{display:flex;align-items:center;justify-content:space-between;width:100%}
-  .f-brand{width:588px;display:flex;flex-direction:column;gap:26px;align-items:flex-start}
-  .f-logo{font-weight:800;font-size:26px;letter-spacing:-.52px;line-height:1.4}
-  .f-tag{font-weight:500;font-size:14px;line-height:22px;color:rgba(255,255,255,.65)}
-  .f-cols{display:flex;gap:24px;align-items:flex-start}
-  .f-col{width:180px;height:130px;display:flex;flex-direction:column;gap:11px}
-  .f-col h4{font-weight:600;font-size:14px;line-height:1.4;letter-spacing:-.28px;height:22px}
-  .f-col ul{list-style:none;display:flex;flex-direction:column;gap:7.4px;opacity:.7}
-  .f-col li{font-weight:400;font-size:14px;line-height:1.4;letter-spacing:-.28px}
-  .f-col li a{color:#fff;text-decoration:none;transition:opacity .25s}
-  .f-col li a:hover{opacity:.6}
-  .f-div{width:100%;height:1px;background:rgba(255,255,255,.2)}
-  .f-copy{font-weight:400;font-size:14px;line-height:1.4;letter-spacing:-.28px;opacity:.3}
-
-  /* ================= RESPONSIVE ================= */
-  .sec,.hero-stats,.hstat,.kgrid{display:contents}
-  .scale-wrap{overflow:hidden}
-  .nav-burger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:44px;height:44px;background:none;border:none;cursor:pointer}
-  .nav-burger span{display:block;width:20px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s}
-  nav.open .nav-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-  nav.open .nav-burger span:nth-child(2){opacity:0}
-  nav.open .nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-
-  @media (max-width:1439px){
-    nav{min-width:0}
-    .nav-inner{width:calc(100% - 48px);max-width:1200px}
-    body{overflow-x:hidden}
-    .artboard{margin:0}
-  }
-
-  @media (max-width:768px){
-    .artboard{width:100%;height:auto}
-    .abs{position:static}
-    .cx{transform:none;left:auto}
-    .rv.cx{transform:translateY(28px)}
-    .rv.cx.on{transform:none}
-    .hero-in.cx{animation-name:heroIn;transform:translateY(26px)}
-
-    nav{height:60px}
-    .nav-inner{width:calc(100% - 40px)}
-    .nav-logo{font-size:20px}
-    .nav-burger{display:flex}
-    .nav-menu{position:fixed;top:60px;left:0;right:0;display:none;flex-direction:column;align-items:stretch;gap:2px;
-      background:rgba(8,10,24,.97);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-      padding:14px 20px 24px;border-bottom:1px solid rgba(255,255,255,.08)}
-    nav.open .nav-menu{display:flex}
-    .nav-link{padding:13px 4px;text-align:left}
-    .nav-cta{margin-top:10px;text-align:center}
-
-    .sec{display:flex;flex-direction:column;align-items:flex-start;position:relative}
-
-    /* hero */
-    .s-hero{align-items:center;padding:104px 24px 64px}
-    .hero-bg{position:absolute;top:0;left:0;width:100%;height:620px;margin-left:0}
-    .hero-bg .shade{background:linear-gradient(to bottom,rgba(11,13,32,0) 68%,#0b0d20 100%)}
-    .hero-title{position:relative;top:auto;font-size:34px;letter-spacing:-1.5px}
-    .hero-sub{position:relative;top:auto;left:auto !important;white-space:normal;font-size:14px;margin-top:16px;max-width:440px}
-    .hero-sub br{display:none}
-    .hero-btns{position:relative;top:auto;margin-top:28px}
-    .scroll-pin,.scroll-txt,.img9{display:none}
-    .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:36px 20px;width:100%;margin-top:300px}
-    .hstat{display:flex;flex-direction:column;gap:8px}
-    .stat-num{font-size:34px;line-height:1.1}
-    .stat-lbl{font-size:13px}
-
-    /* section commons */
-    .s-about,.s-arch,.s-track,.s-future,.s-horizon{padding:72px 24px 0}
-    .h2-46{font-size:30px;letter-spacing:-1px;white-space:normal;width:auto !important;margin-top:20px}
-    .h2-46xb{font-size:26px;letter-spacing:-.8px;width:auto !important;margin-top:20px}
-    .body-16{width:auto !important;white-space:normal !important;margin-top:16px}
-    .body-16 p{white-space:normal !important}
-
-    /* about */
-    .about-cards{position:static;display:flex;gap:14px;width:calc(100% + 48px);margin:32px -24px 0;
-      padding:8px 24px 16px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
-    .p-card{width:250px;height:330px;scroll-snap-align:start}
-    .p-card .ph{left:0 !important;top:0 !important;width:100% !important;height:100% !important}
-    .p-card .cap{font-size:20px}
-    .hline,.hline-blue,.vline-blue{display:none}
-    .kgrid{display:flex;flex-direction:column;gap:26px;width:100%;margin-top:48px}
-    .kstat{width:100%;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.12)}
-    .kstat .row{gap:20px !important;justify-content:flex-start !important}
-    .kstat .k-num{font-size:36px;line-height:1.15}
-    .kstat .k-desc{width:auto;flex:1}
-
-    /* architecture */
-    .s-arch{align-items:center;text-align:center}
-    .arch-cta{margin-top:26px;font-size:18px;padding:14px 22px}
-    .bracket,.arch-vline{display:none}
-    .l-card{position:static;width:100%;margin-top:20px;text-align:left}
-    .l-card .l-desc{width:100% !important}
-    .l-title,.l-item{white-space:normal}
-    .s-arch .l-card:first-of-type{margin-top:36px}
-
-    /* track record */
-    .prod-card{position:static;width:100%;margin-top:20px;flex-direction:column;align-items:flex-start;padding:20px;gap:18px}
-    .s-track .prod-card:first-of-type{margin-top:36px}
-    .prod-body{gap:14px;width:100%}
-    .prod-title{font-size:22px;white-space:normal}
-    .prod-desc{width:100% !important}
-    .prod-stats{flex-wrap:wrap;gap:16px 28px !important}
-    .ps{width:auto !important}
-    .ps .b{font-size:16px}
-
-    /* vision (light) */
-    .vision{position:static;width:100%;height:auto;margin-left:0;padding:72px 24px;gap:40px}
-    .vision .head{flex-direction:column;align-items:flex-start;gap:32px}
-    .vision h2{font-size:30px;white-space:normal;letter-spacing:-.6px}
-    .vision .lead{white-space:normal;font-size:15px}
-    .vision .lead br{display:none}
-    .vision .big{font-size:92px;line-height:1;letter-spacing:-3px}
-    .v-cards{flex-direction:column;width:100%;gap:16px}
-    .v-card{width:100%}
-    .v-card .icon{left:auto;right:10px}
-
-    .cover-bg{display:none}
-
-    /* time horizon */
-    .s-horizon{align-items:center;text-align:center}
-    .th-title{font-size:30px;width:auto !important;margin-top:20px;letter-spacing:-.6px}
-    .spectrum{position:static;width:100%;margin-top:36px}
-    .th-cards{position:static;width:100%;flex-direction:column;margin-top:24px;text-align:left}
-    .th-card{width:100%}
-
-    /* future vision — single column, desktop reading order */
-    .ind-grid{position:static;flex-direction:column;width:100%;height:auto;gap:16px;margin-top:32px}
-    .icol{display:contents}
-    .i-card{width:100%;height:240px}
-    .i-card + .i-card{margin-top:0}
-    .icol:nth-child(1) .i-card{order:3}
-    .icol:nth-child(2) .i-card:first-child{order:1}
-    .icol:nth-child(2) .i-card:last-child{order:4}
-    .icol:nth-child(3) .i-card:first-child{order:2}
-    .icol:nth-child(3) .i-card:last-child{order:5}
-    .i-card .ph{left:0 !important;top:0 !important;width:100% !important;bottom:0 !important}
-
-    /* partners */
-    .partners{position:static;width:100%;height:auto;margin-left:0;padding:72px 0 88px;gap:40px}
-    .partners .head{width:auto;padding:0 24px}
-    .partners h2{font-size:30px}
-    .marquee{width:100%}
-    .logo-card{width:220px;height:104px}
-    .logo-card img{width:130px;height:41px}
-
-    /* footer */
-    footer{position:static;width:100%;height:auto;margin-left:0;padding:48px 24px}
-    .f-top{flex-direction:column;align-items:flex-start;gap:36px}
-    .f-brand{width:auto;gap:16px}
-    .f-cols{flex-wrap:wrap;gap:24px 20px}
-    .f-col{width:150px;height:auto}
-  }
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SGMA — 기상 및 수산 생태계 분석 GEO TECH 기업</title>
+<meta name="description" content="SGMA는 기상·해양 데이터와 AI로 수산·레저·공공의 의사결정을 돕는 Earth Intelligence 기업입니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body>
-
-<nav id="nav">
-  <div class="nav-inner">
-    <a class="nav-logo" data-go="top">SGMA</a>
-    <button class="nav-burger" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
-    <div class="nav-menu">
-      <button class="nav-link" data-go="sec-about">About US</button>
-      <button class="nav-link" data-go="sec-arch">Earth Intelligence</button>
-      <button class="nav-link dim" data-go="sec-track">Products</button>
-      <button class="nav-link dim" data-go="sec-horizon">Technology</button>
-      <button class="nav-cta" data-go="sec-partners">Contact Us</button>
-    </div>
-  </div>
-</nav>
-
-<div class="scale-wrap">
-<div class="artboard">
-
-  <!-- ======== HERO ======== -->
-  <div class="sec s-hero">
-  <div class="abs hero-bg"><img src="assets/imgImage8.png" alt="Earth from space"><div class="shade"></div></div>
-
-  <div class="abs cx hero-title hero-in cx" style="--hd:.1s">지구의 데이터로<br>산업을 움직입니다</div>
-  <div class="abs cx hero-sub hero-in cx" style="--hd:.3s;left:calc(50% + .5px)">SGMA는 글로벌 기상·해양·농수산·위성·우주 데이터를 통합하여 산업과 공공 분야에 <br>실시간 모니터링, 24~72시간 예측, 실행 가이드를 제공하는 Earth Intelligence Platform입니다.</div>
-  <div class="abs cx hero-btns hero-in cx" style="--hd:.5s">
-    <a class="glass-btn" data-go="sec-arch">플랫폼 소개</a>
-    <a class="glass-btn" data-go="sec-partners">투자 문의</a>
-  </div>
-  <div class="abs scroll-pin hero-in" style="--hd:.9s"><img src="assets/imgGroup1.svg" alt="" width="18" height="60"></div>
-  <p class="abs scroll-txt hero-in" style="--hd:.9s;left:687px">SCROLL</p>
-
-  <!-- hero stats -->
-  <div class="hero-stats">
-    <div class="hstat">
-      <p class="abs stat-num rv" style="left:120px;top:859px" data-count="1000000" data-fmt="m">1M+</p>
-      <p class="abs stat-lbl rv" style="left:120px;top:921px;--d:.05s">어신앱 누적 다운로드</p>
-    </div>
-    <div class="hstat">
-      <p class="abs stat-num rv" style="left:474px;top:859px;--d:.1s" data-count="471">471</p>
-      <p class="abs stat-lbl rv" style="left:474px;top:921px;--d:.15s">글로벌 데이터 소스</p>
-    </div>
-    <div class="hstat">
-      <p class="abs stat-num rv" style="left:828px;top:859px;--d:.2s">24-72h</p>
-      <p class="abs stat-lbl rv" style="left:828px;top:921px;--d:.25s">Forecast Horizon</p>
-    </div>
-    <div class="hstat">
-      <p class="abs stat-num rv" style="left:1183px;top:859px;--d:.3s" data-count="5">5</p>
-      <p class="abs stat-lbl rv" style="left:1183px;top:921px;--d:.35s">Vertical 산업 도메인</p>
-    </div>
-  </div>
-
-  <div class="abs img9"><img src="assets/imgImage9.png" alt=""><div class="shade"></div></div>
-  </div><!-- /s-hero -->
-
-  <!-- ======== ABOUT ======== -->
-  <div class="sec s-about">
-  <div id="sec-about" class="abs" style="left:0;top:1153px;width:1px;height:1px"></div>
-  <div class="abs pill rv" style="left:120px;top:1153px">ABOUT SGMA</div>
-  <div class="abs h2-46 rv" style="left:120px;top:1222px;--d:.1s">데이터로 더 나은<br>결정을 만드는 회사</div>
-  <div class="abs body-16 rv" style="left:120px;top:1376px;width:455px;opacity:0;--d:.2s" data-keep-op=".6">
-    <p>SGMA 는 자체 보유한 100만 명 사용자 기반의 어신앱·어신커머스·Fuler 어신카메라를 통해 한국 수산 산업의 실 데이터를 축적해 왔습니다.</p>
-    <p>&#8203;</p>
-    <p>이 자산을 바탕으로, 글로벌 기상·해양·농수산·위성·우주 데이터를 통합한 Earth Intelligence Platform 으로 도약하고 있습니다.</p>
-  </div>
-
-  <div class="abs about-cards">
-    <div class="p-card rv">
-      <div class="ph" style="left:-53px;top:1px;width:534px;height:400px"><img src="assets/imgUnsplashUdVjzhI9GXs1.jpg" alt="양식장"><div class="shade"></div></div>
-      <div class="cap">양식장 폐사를<br>사전 예방</div>
-    </div>
-    <div class="p-card rv" style="--d:.12s">
-      <div class="ph" style="left:-185px;top:-3px;width:610px;height:406px"><img src="assets/imgUnsplashDupFowqI6OI1.jpg" alt="농업"><div class="shade" style="background:linear-gradient(180deg,rgba(11,13,32,0) 55.5%,rgba(11,13,32,.8) 100%),linear-gradient(90deg,rgba(0,0,0,.05),rgba(0,0,0,.05))"></div></div>
-      <div class="cap">농가의<br>작황을 예측</div>
-    </div>
-    <div class="p-card rv" style="--d:.24s">
-      <div class="ph" style="left:-150px;top:0;width:600px;height:400px"><img src="assets/imgUnsplashOh0DitWoHi5.jpg" alt="유통"><div class="shade"></div></div>
-      <div class="cap">유통의 매입가를<br>최적화</div>
-    </div>
-  </div>
-
-  <!-- about stats cross -->
-  <div class="abs hline rv-fade" style="left:120px;top:1740px;width:1200px"></div>
-  <div class="abs hline-blue rv-fade" style="left:120px;top:1740px;width:1200px"></div>
-  <div class="abs vline-blue rv-fade" style="left:719.5px;top:1611px;height:258px"></div>
-
-  <div class="kgrid">
-    <div class="abs kstat rv" style="left:160px;top:1627px">
-      <p class="k-lbl">User Base</p>
-      <div class="row" style="gap:30px"><p class="k-num" data-count="100" data-fmt="man">100만+</p><div class="k-desc"><p>어신앱 누적 다운로드</p><p>실 사용자 기반의 행동·환경 데이터 자산</p></div></div>
-    </div>
-    <div class="abs kstat rv" style="left:825px;top:1627px;--d:.1s">
-      <p class="k-lbl">User Base</p>
-      <div class="row" style="gap:100px"><p class="k-num" data-count="471">471</p><div class="k-desc"><p>한국 공공 211 + 글로벌 161 + 우주 99</p><p>단일 통합 카탈로그</p></div></div>
-    </div>
-    <div class="abs kstat rv" style="left:160px;top:1770px;--d:.2s">
-      <p class="k-lbl">AI Vision</p>
-      <div class="row" style="gap:73px"><p class="k-num">Fuler</p><div class="k-desc"><p>어신앱 누적 다운로드</p><p>실 사용자 기반의 행동·환경 데이터 자산</p></div></div>
-    </div>
-    <div class="abs kstat rv" style="left:825px;top:1770px;--d:.3s">
-      <p class="k-lbl">Verticals</p>
-      <div class="row" style="justify-content:space-between"><p class="k-num" data-count="5">5</p><div class="k-desc"><p>양식·재난·농업·유통·금융</p><p>산업 도메인 특화 SaaS·License</p></div></div>
-    </div>
-  </div>
-  </div><!-- /s-about -->
-
-  <!-- ======== ARCHITECTURE ======== -->
-  <div class="sec s-arch">
-  <div id="sec-arch" class="abs" style="left:0;top:2015px;width:1px;height:1px"></div>
-  <div class="abs cx pill rv cx" style="top:2015px">EARTH&nbsp;&nbsp;INTELLIGENCE&nbsp;&nbsp;ARCHITECTURE</div>
-  <p class="abs cx h2-46 rv cx" style="top:2084px;letter-spacing:normal;--d:.1s">지구의 정보를 행동으로</p>
-  <p class="abs cx body-16 rv cx" style="top:2168px;opacity:0;text-align:center;white-space:nowrap;--d:.2s" data-keep-op=".6">L1 데이터 통합 → L2 예측 및 분석 → L3 행동 가이드</p>
-  <div class="abs cx arch-cta rv cx" style="top:2259px;--d:.3s">3-Layer 아키텍처</div>
-
-  <div class="abs bracket rv-fade" style="--d:.45s"><img src="assets/imgRectangle5.svg" alt="" width="838" height="109"></div>
-  <div class="abs arch-vline rv-fade" style="--d:.45s"></div>
-
-  <div class="l-card rv" style="left:120px;--d:.15s">
-    <div class="l-badge-row"><div class="l-badge">L1</div><p class="l-layer">DATA LAYER</p></div>
-    <p class="l-title">통합 데이터 레이어</p>
-    <p class="l-desc" style="width:256px">한국·글로벌·우주의 다양한 데이터 소스를 단일 카탈로그로 통합</p>
-    <div class="l-list">
-      <div class="l-item"><span class="l-dot"></span>한국 공공 — KMA·KHOA·NIFS·RDA·aT (211)</div>
-      <div class="l-item"><span class="l-dot"></span>글로벌 모델 — ECMWF·GFS·CMEMS (161)</div>
-      <div class="l-item"><span class="l-dot"></span>위성·우주환경 — Sentinel·KASI (99)</div>
-      <div class="l-item"><span class="l-dot"></span>S3 Lake + RDS PostGIS</div>
-      <div class="l-item"><span class="l-dot"></span>6시간 cycle 자동 ingestion</div>
-    </div>
-    <div class="l-div"></div>
-    <div><p class="l-foot-num" data-count="471">471</p><p class="l-foot-lbl">통합 데이터 소스</p></div>
-  </div>
-  <div class="l-card rv" style="left:535px;--d:.3s">
-    <div class="l-badge-row"><div class="l-badge">L2</div><p class="l-layer">INTELLIGENCE LAYER</p></div>
-    <p class="l-title">예측·분석 엔진</p>
-    <p class="l-desc" style="width:214px;font-size:14px;letter-spacing:-.28px">실시간 + 24-72시간 예측 + 이상 탐지 + 행동 가이드 권고</p>
-    <div class="l-list">
-      <div class="l-item"><span class="l-dot"></span>24-72h Multi-Model Ensemble</div>
-      <div class="l-item"><span class="l-dot"></span>Anomaly · Risk Scoring</div>
-      <div class="l-item"><span class="l-dot"></span>ML Models (XGBoost · LSTM · Transformer)</div>
-      <div class="l-item"><span class="l-dot"></span>Activity Score v3 (8 종목)</div>
-      <div class="l-item"><span class="l-dot"></span>Decision Layer — 행동 권고 엔진</div>
-    </div>
-    <div class="l-div"></div>
-    <div><p class="l-foot-num">24-72h</p><p class="l-foot-lbl">Forecast Horizon</p></div>
-  </div>
-  <div class="l-card rv" style="left:950px;--d:.45s">
-    <div class="l-badge-row"><div class="l-badge">L3</div><p class="l-layer">DECISION LAYER</p></div>
-    <p class="l-title">행동·SaaS 채널</p>
-    <p class="l-desc" style="width:255px">vertical 산업별 SaaS·모바일·API 채널로 의사결정자에게 직접 전달</p>
-    <div class="l-list">
-      <div class="l-item"><span class="l-dot"></span>Vertical SaaS — 양식·재난 콘솔</div>
-      <div class="l-item"><span class="l-dot"></span>Mobile — 어신앱·어신카메라</div>
-      <div class="l-item"><span class="l-dot"></span>B2B Public API · SDK</div>
-      <div class="l-item"><span class="l-dot"></span>AI Concierge (RAG·LLM 챗봇)</div>
-      <div class="l-item"><span class="l-dot"></span>Admin 통합 관리 콘솔</div>
-    </div>
-    <div class="l-div"></div>
-    <div><p class="l-foot-num" data-count="5">5</p><p class="l-foot-lbl">Vertical Domain</p></div>
-  </div>
-
-  </div><!-- /s-arch -->
-
-  <!-- ======== TRACK RECORD ======== -->
-  <div class="sec s-track">
-  <div id="sec-track" class="abs" style="left:0;top:3025px;width:1px;height:1px"></div>
-  <div class="abs pill rv" style="left:120px;top:3025px">TRACK&nbsp;&nbsp;RECORD</div>
-  <div class="abs h2-46xb rv" style="left:120px;top:3094px;width:1200px;--d:.1s">검증된 서비스를 만들었습니다.<br>이제 더 많은 산업으로 확장합니다.</div>
-  <div class="abs rv body-16" style="left:120px;top:3238px;width:760px;font-weight:400;font-size:16px;line-height:1.4;letter-spacing:0;opacity:0;--d:.2s" data-keep-op=".7">
-    <p>SGMA 는 이미 한국 수산 산업에서 검증된 3가지 제품을 운영하며, 4번째 제품 BlueMatrix 를 출시합니다.</p>
-    <p>이 제품들이 Earth Intelligence 의 데이터·사용자·AI·플랫폼 기반을 형성합니다.</p>
-  </div>
-
-  <!-- card 1 : 어신 -->
-  <div class="prod-card rv" style="top:3356px">
-    <div class="g-wrap">
-      <div class="g-bg"></div>
-      <div class="g1-card"></div>
-      <div class="g1-pill">오늘의 낚시 지수</div>
-      <p class="g1-score">87</p>
-      <p class="g1-cap">매우 좋음 · 광어·돔</p>
-    </div>
-    <div class="prod-body">
-      <div class="prod-tag-row"><div class="prod-tag" style="width:96px">FLAGSHIP</div><p class="prod-date">2018 — 운영 중</p></div>
-      <p class="prod-title">어신 — AI 낚시 지수 추천 앱</p>
-      <div class="prod-desc"><p>기상·해양·조석·바람·수온 데이터를 종합해 낚시 적합도를 0-100 점수로 제공</p><p>100만+ 누적 다운로드, 활성 사용자 기반 + 실 사용 데이터 누적.</p></div>
-      <div class="prod-div"></div>
-      <div class="prod-stats" style="gap:116px">
-        <div class="ps" style="width:97px"><p class="a">다운로드</p><p class="b">1,000,000+</p></div>
-        <div class="ps" style="width:50px"><p class="a">데이터 변수</p><p class="b">20+</p></div>
-        <div class="ps" style="width:46px"><p class="a">지점</p><p class="b">500+</p></div>
-        <div class="ps" style="width:84px"><p class="a">적용</p><p class="b">한국 전 해역</p></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- card 2 : 어신커머스 -->
-  <div class="prod-card rv" style="top:3646px">
-    <div class="g-wrap" style="overflow:hidden">
-      <div class="g-bg"></div>
-      <div class="g2-item" style="left:45px"></div>
-      <div class="g2-item" style="left:195px"></div>
-      <div class="g2-strip-r"></div>
-      <div class="g2-strip-l"></div>
-      <img class="g2-img" style="left:68px" src="assets/img.png" alt="낚시대">
-      <img class="g2-img" style="left:216px" src="assets/img1.png" alt="릴">
-      <p class="g2-name" style="left:97px;top:142px">낚시대</p>
-      <p class="g2-price" style="left:83px;top:165px">₩ 89,000</p>
-      <p class="g2-name" style="left:259px;top:142px">릴</p>
-      <p class="g2-price" style="left:230px;top:163px">₩ 145,000</p>
-    </div>
-    <div class="prod-body">
-      <div class="prod-tag-row"><div class="prod-tag" style="width:96px">COMMERCE</div><p class="prod-date">2021 — 운영 중</p></div>
-      <p class="prod-title">어신커머스 — 낚시 전문 e-Commerce</p>
-      <div class="prod-desc"><p>어신 사용자 기반 위에 낚시 용품 커머스를 결합.</p><p>사용자의 출조 패턴·선호 어종·지역 데이터를 활용한 개인화 추천 + 매출 수익화.</p></div>
-      <div class="prod-div"></div>
-      <div class="prod-stats" style="gap:104px">
-        <div class="ps" style="width:46px"><p class="a">가입 회원</p><p class="b">수십만</p></div>
-        <div class="ps" style="width:50px"><p class="a">입점 브랜드</p><p class="b">200+</p></div>
-        <div class="ps" style="width:132px"><p class="a">카테고리</p><p class="b">낚시·캠핑·아웃도어</p></div>
-        <div class="ps" style="width:96px"><p class="a">역할</p><p class="b">데이터 수익화</p></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- card 3 : Fuler -->
-  <div class="prod-card rv" style="top:3936px">
-    <div class="g-wrap g3-wrap">
-      <div class="g-bg"></div>
-      <div class="g3-fish"><img src="assets/img3.png" alt="어종 인식"></div>
-      <div class="g3-target"><img src="assets/imgSizeTargetBox.svg" alt=""></div>
-      <div class="g3-size"><img src="assets/img1Fish.svg" alt=""><span>24.58</span><span>×</span><span>47.24</span><span>cm</span></div>
-    </div>
-    <div class="prod-body">
-      <div class="prod-tag-row"><div class="prod-tag" style="width:96px">AI VISION</div><p class="prod-date">2024 — 베타 운영</p></div>
-      <p class="prod-title">Fuler · 어신카메라 — AI 어종 자동 인식</p>
-      <div class="prod-desc" style="width:717px"><p>카메라로 잡은 어종을 자동 식별하고 사이즈 측정</p><p>어종 이미지 + 조과 시점 기상·해양 데이터를 결합해 어획 패턴 모델링 — 양식·자원관리 vertical 진입의 기술 자산.</p></div>
-      <div class="prod-div"></div>
-      <div class="prod-stats" style="gap:113px">
-        <div class="ps" style="width:62px"><p class="a">어종 분류</p><p class="b">100+ 종</p></div>
-        <div class="ps" style="width:50px"><p class="a">측정 정확도</p><p class="b">±5%</p></div>
-        <div class="ps" style="width:88px"><p class="a">데이터 축적</p><p class="b">이미지+환경</p></div>
-        <div class="ps" style="width:86px"><p class="a">역할</p><p class="b">AI 자산 기반</p></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- card 4 : BlueMatrix -->
-  <div class="prod-card rv" style="top:4226px">
-    <div class="g-wrap">
-      <div class="g-bg"></div>
-      <div class="g4-chart"></div>
-      <div class="g4-bar" style="left:37px;top:112.4px;height:41.6px;opacity:.4;--d:.05s"></div>
-      <div class="g4-bar" style="left:89px;top:102.8px;height:51.2px;opacity:.6;--d:.15s"></div>
-      <div class="g4-bar" style="left:141px;top:91.6px;height:62.4px;opacity:.6;--d:.25s"></div>
-      <div class="g4-bar" style="left:193px;top:86.8px;height:67.2px;--d:.35s"></div>
-      <div class="g4-bar" style="left:245px;top:90px;height:64px;--d:.45s"></div>
-      <div class="g4-bar" style="left:297px;top:104.4px;height:49.6px;opacity:.6;--d:.55s"></div>
-      <p class="g4-hr" style="left:51px;top:158px">09</p>
-      <p class="g4-hr" style="left:103px;top:158px">12</p>
-      <p class="g4-hr" style="left:155px;top:158px">15</p>
-      <p class="g4-hr" style="left:207px;top:158px">18</p>
-      <p class="g4-hr" style="left:259px;top:158px">21</p>
-      <p class="g4-hr" style="left:311px;top:158px">24</p>
-      <div class="g4-live"><span class="dot"></span><span>EARTH INTELLIGENCE · LIVE</span></div>
-    </div>
-    <div class="prod-body">
-      <div class="prod-tag-row"><div class="prod-tag" style="width:110px">NEXT-GEN</div><p class="prod-date">2026 — 정식 출시</p></div>
-      <p class="prod-title">BlueMatrix — Earth Intelligence Platform</p>
-      <div class="prod-desc" style="width:745px"><p>3개의 검증된 제품·데이터 자산 위에 구축한 SGMA 의 차세대 플랫폼</p><p>글로벌 471개 데이터·24-72시간 예측·5 vertical 산업 SaaS — 의사결정자를 위한 단일 인텔리전스 시스템</p></div>
-      <div class="prod-div"></div>
-      <div class="prod-stats" style="gap:128px">
-        <div class="ps" style="width:50px"><p class="a">데이터 소스</p><p class="b">471</p></div>
-        <div class="ps" style="width:61px"><p class="a">Forecast</p><p class="b">24-72h</p></div>
-        <div class="ps" style="width:46px"><p class="a">Vertical</p><p class="b">5 산업</p></div>
-        <div class="ps" style="width:150px"><p class="a">채널</p><p class="b">SaaS · API · Mobile</p></div>
-      </div>
-    </div>
-  </div>
-
-  </div><!-- /s-track -->
-
-  <!-- ======== OUR VISION (light) ======== -->
-  <section class="abs vision" id="sec-vision" style="left:50%">
-    <div class="head">
-      <div style="display:flex;flex-direction:column;gap:60px;align-items:flex-start">
-        <div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start">
-          <div class="pill blue rv">OUR VISION</div>
-          <h2 class="rv" style="--d:.1s">데이터의 깊이가<br>차별을 만듭니다</h2>
+<body><header class="nav">
+  <div class="nav__in">
+    <a href="index.html" class="nav__logo">SGMA</a>
+    <button class="nav__burger" aria-label="menu"><span></span><span></span><span></span></button>
+    <ul class="nav__menu">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li class="dd"><a href="#" aria-haspopup="true">Service <svg class="caret" viewBox="0 0 9 6"><path d="M0 0l4.5 6L9 0z"/></svg></a>
+        <div class="dd__panel">
+          <a class="dd__item" href="yeosin.html"><b><i></i>어신 앱</b><span>B2C 해양 내비게이터 — 낚시 지수 · 입질확률 · 물때</span></a>
+          <a class="dd__item" href="partners.html"><b><i></i>어신 파트너스</b><span>선상낚시 · 해양레저 업체 제휴 플랫폼</span></a>
+          <a class="dd__item" href="fuler.html"><b><i></i>Fuler</b><span>글로벌 AI 어종 인식 · 어획 기록</span></a>
+          <a class="dd__item" href="bluematrix.html"><b><i></i>BlueMatrix</b><span>B2B · B2G 기상 · 해양 데이터 플랫폼</span></a>
         </div>
-        <div class="lead rv" style="--d:.2s">다양한 출처의 데이터를 하나의 플랫폼에서 통합하고 지속적으로 업데이트합니다. <br>AI 기반 분석과 도메인 특화 모델을 통해 복잡한 데이터를 실행 가능한 인사이트로 전환합니다.</div>
-      </div>
-      <p class="big rv" style="--d:.25s" data-count="471">471</p>
-    </div>
-    <div class="v-cards">
-      <div class="v-card rv">
-        <img class="icon" src="assets/imgRiBuildingFill.svg" alt="">
-        <div class="txt"><p class="t">한국 공공</p><p class="s">KMA · KHOA · NIFS · RDA · aT · 한은 · 관세청</p></div>
-        <p class="n" data-count="211">211</p>
-      </div>
-      <div class="v-card rv" style="--d:.12s">
-        <img class="icon" src="assets/imgSolarGlobalBold.svg" alt="">
-        <div class="txt"><p class="t">글로벌</p><p class="s">ECMWF · GFS · CMEMS · USDA · FAO · World Bank</p></div>
-        <p class="n" data-count="161">161</p>
-      </div>
-      <div class="v-card rv" style="--d:.24s">
-        <img class="icon" src="assets/imgBoxiconsPlanetFilled.svg" alt="">
-        <div class="txt"><p class="t">우주·위성</p><p class="s sm">Sentinel · MODIS · KASI · GNSS · 상업 위성</p></div>
-        <p class="n" data-count="99">99</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- decorative cover behind dark sections -->
-  <div class="abs cover-bg"><img src="assets/imgPluginFileCover1.svg" alt=""></div>
-
-  <!-- ======== TIME HORIZON ======== -->
-  <div class="sec s-horizon">
-  <div id="sec-horizon" class="abs" style="left:0;top:5530px;width:1px;height:1px"></div>
-  <div class="abs cx pill rv cx" style="top:5530px">TIME&nbsp;&nbsp;HORIZON</div>
-  <div class="abs cx th-title rv cx" style="top:5595px;width:1288px;--d:.1s">예측을 넘어<br>실행까지 연결합니다</div>
-  <div class="abs cx body-16 rv cx" style="top:5739px;text-align:center;white-space:nowrap;opacity:0;--d:.2s" data-keep-op=".7">
-    <p>100년 이상의 국내 데이터와 85년 이상의 글로벌 데이터를 기반으로 실시간부터 최대 3년까지 예측합니다.</p>
-    <p>장기적인 산업 변화까지 고려한 의사결정을 지원합니다.</p>
+      </li>
+      <li><a href="technology.html">Technology</a></li>
+      <li><a href="contact.html" class="btn btn--pri nav__cta">Contact Us</a></li>
+    </ul>
   </div>
-  <div class="abs spectrum"><img src="assets/imgRectangle.png" alt=""></div>
-
-  <div class="abs th-cards">
-    <div class="th-card th-c1 rv">
-      <p class="range">실시간 ~ 72h</p>
-      <p class="name" style="color:#1c24ea">단기 예측</p>
-      <div class="div"></div>
-      <div class="grp"><p class="cap">TECHNOLOGY</p><div class="val"><p>NWP Ensemble</p><p>(ECMWF · GFS · KMA)</p></div></div>
-      <div class="grp" style="width:250px"><p class="cap">USE&nbsp;&nbsp;CASES</p><div class="cases"><p>출항·항해 안전</p><p>재난 긴급 대응</p><p>폐사·적조 사전 경고</p></div></div>
+</header><section class="hero">
+  <div class="hero__bg" style="background-image:url('assets/img/hero-home.jpg')"></div>
+  <div class="hero__dim"></div>
+  <div class="hero__in">
+    <div class="st eyebrow" style="color:#aab3ff">GEO-TECH · EARTH INTELLIGENCE</div>
+    <h1 class="st">지구의 데이터로<br>산업을 움직입니다</h1>
+    <p class="st sub">SGMA는 기상·해양 데이터와 AI로 수산·레저·공공의 의사결정을 돕는 GEO TECH 기업입니다.<br>지구온난화 시대, 예측을 넘어 실행까지 연결합니다.</p>
+    <div class="st hero__cta"><a href="#services" class="btn btn--pri">서비스 둘러보기</a><a href="about.html" class="btn btn--ghost">회사 소개 →</a></div>
+    <div class="st stats"><div><b data-count="1" data-decimals="0" data-suffix="M+">0M+</b><span>어신 누적 다운로드</span></div><div><b data-count="471" data-decimals="0" data-suffix="">0</b><span>연동 데이터 소스</span></div><div><b>24-72h</b><span>예측 리드타임</span></div><div><b data-count="4" data-decimals="0" data-suffix="">0</b><span>서비스 라인업</span></div></div>
+  </div>
+</section>
+<section class="sec" id="services"><div class="container">
+  <div data-reveal><div class="eyebrow">Our Services</div><h2 class="h2">활동 지수부터 의사결정까지,<br>데이터가 판단을 돕습니다</h2><p class="sub">일반 사용자에게는 오늘의 야외 활동 지수를, 기업과 정부에는 예측 기반 의사결정 데이터를 — 모두 하나의 기술에서 나옵니다.</p></div>
+  <div class="grid grid--2" data-stagger="0.1">
+    <a class="card card--img" href="yeosin.html">
+      <div class="card__img"><div style="background-image:url('assets/img/card-yeosin.jpg')"></div></div>
+      <div class="card__body"><span class="tag">B2C App</span><h3>어신</h3><div class="cap">AI 낚시 지수 · 해양 레저 내비게이터</div>
+      <p>낚시 지수, 어종 입질확률, 물때·조석, 테마별 활동지수까지 바다의 모든 데이터를 한 앱에서. 누적 다운로드 83만, MAU 23만의 국내 대표 해양 정보 앱입니다.</p><span class="more">자세히 보기</span></div></a>
+    <a class="card card--img" href="partners.html">
+      <div class="card__img"><div style="background-image:url('assets/img/card-partners.jpg')"></div></div>
+      <div class="card__body"><span class="tag">B2B Partner</span><h3>어신 파트너스</h3><div class="cap">선상낚시 · 해양레저 업체 제휴 플랫폼</div>
+      <p>예약 관리와 수수료 경쟁력 있는 결제, 데이터 기반 출항 판단까지. 23만 MAU 사용자와 파트너 업체를 연결해 함께 성장합니다.</p><span class="more">자세히 보기</span></div></a>
+    <a class="card card--img" href="fuler.html">
+      <div class="card__img"><div style="background-image:url('assets/img/card-fuler.jpg')"></div></div>
+      <div class="card__body"><span class="tag">Global · AI</span><h3>Fuler</h3><div class="cap">AI 어종 인식 · 어획 기록 서비스</div>
+      <p>사진 한 장으로 어종 판별과 치수 계측을 자동으로. 어획 시점의 기상·해양 정보를 매칭해 기록을 데이터 자산으로 만듭니다. 2026 글로벌 출시.</p><span class="more">자세히 보기</span></div></a>
+    <a class="card card--img" href="bluematrix.html">
+      <div class="card__img"><div style="background-image:url('assets/img/card-bluematrix.jpg')"></div></div>
+      <div class="card__body"><span class="tag">B2B · B2G Data</span><h3>BlueMatrix</h3><div class="cap">Earth Intelligence 데이터 플랫폼</div>
+      <p>MME 기상 예보·관측과 수산 생태계 변화 예측(TSF)을 API와 SaaS로 제공합니다. 기업과 정부의 의사결정을 데이터로 지원합니다.</p><span class="more">자세히 보기</span></div></a>
+  </div>
+</div></section>
+<section class="sec sec--dark"><div class="container">
+  <div data-reveal><div class="eyebrow">Core Technology</div><h2 class="h2">예측을 만드는 세 개의 엔진</h2><p class="sub">5년간 축적한 기상·해양 관측 데이터와 자체 예측 모델이 모든 서비스의 기반입니다.</p></div>
+  <div class="grid grid--3" data-stagger="0.12">
+    <div class="card"><span class="badge">MME</span><h3>멀티모델 앙상블 기상 엔진</h3><p>국가별 선진 기상청 예보 데이터와 ECMWF 관측 데이터를 결합, BIAS 오차 보정으로 정밀도를 높인 기상 예보·관측 시스템.</p></div>
+    <div class="card"><span class="badge">TSF</span><h3>수산 생태계 변화 예측</h3><p>5km 격자 해구 단위 어획 빅데이터와 위성 관측 4차원 수괴 정보 기반, 수산생물 생태계 변화 시계열 예측 시스템.</p></div>
+    <div class="card"><span class="badge">AI</span><h3>테마별 활동지수 알고리즘</h3><p>낚시·서핑·스쿠버다이빙 등 해양 레저 종목별 가중치를 적용한 Activity Index — 오늘 바다에 나가도 되는지 한 번에 판단.</p></div>
+  </div>
+  <div class="pipe" data-seq data-reveal>
+    <div class="pipe__step"><i>01</i><b>471개 소스 수집</b></div><span class="pipe__arrow">→</span>
+    <div class="pipe__step"><i>02</i><b>표준화 · 아카이빙</b></div><span class="pipe__arrow">→</span>
+    <div class="pipe__step"><i>03</i><b>MME 모델 보정</b></div><span class="pipe__arrow">→</span>
+    <div class="pipe__step"><i>04</i><b>테마별 알고리즘</b></div><span class="pipe__arrow">→</span>
+    <div class="pipe__step"><i>05</i><b>서비스 API</b></div>
+  </div>
+</div></section>
+<section class="sec"><div class="container">
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap">
+    <div data-reveal><div class="eyebrow">Data Asset</div><h2 class="h2">데이터의 깊이가<br>차별을 만듭니다</h2><p class="sub">경쟁사가 복제할 수 없는 5년 누적 관측·어획 데이터. 471개 소스가 실시간으로 연결됩니다.</p></div>
+    <div class="bignum" data-count="471" data-reveal>0</div>
+  </div>
+  <div class="grid grid--3" data-stagger="0.12">
+    <div class="card"><b class="num" style="font-size:32px">211</b><h3 style="margin-top:6px">한국 공공</h3><p>KMA · KHOA · 해양수산부 · 국립수산과학원 등 국내 공공 관측망</p></div>
+    <div class="card"><b class="num" style="font-size:32px">161</b><h3 style="margin-top:6px">글로벌</h3><p>ECMWF · NOAA · JMA 등 글로벌 기상·해양 기관 데이터</p></div>
+    <div class="card"><b class="num" style="font-size:32px">99</b><h3 style="margin-top:6px">우주 · 위성</h3><p>위성 관측 4차원 수괴 정보 · 해색 · 수온 원격탐사 데이터</p></div>
+  </div>
+</div></section>
+<section class="sec sec--dark"><div class="container">
+  <div data-reveal><div class="eyebrow">Future Vision</div><h2 class="h2">핵심 산업을 시작으로 확장을 이어갑니다</h2></div>
+  <div class="grid grid--4" data-stagger="0.1">
+    <div class="card card--img"><div class="card__img" style="height:140px"><div style="background-image:url('assets/img/uc-ocean.jpg')"></div></div>
+      <div class="card__body" style="padding:20px 24px 24px"><h3 style="font-size:17px;margin:0">해양 · 수산업</h3><p style="margin-top:6px;font-size:13px">어획량 예측 · 양식장 폐사 예방</p></div></div>
+    <div class="card card--img"><div class="card__img" style="height:140px"><div style="background-image:url('assets/img/uc-disaster.jpg')"></div></div>
+      <div class="card__body" style="padding:20px 24px 24px"><h3 style="font-size:17px;margin:0">재난 · 공공</h3><p style="margin-top:6px;font-size:13px">이상 해황 조기 경보 · 정책 데이터</p></div></div>
+    <div class="card card--img"><div class="card__img" style="height:140px"><div style="background-image:url('assets/img/uc-agri.jpg')"></div></div>
+      <div class="card__body" style="padding:20px 24px 24px"><h3 style="font-size:17px;margin:0">농업</h3><p style="margin-top:6px;font-size:13px">기상 예보 기반 작황 관리</p></div></div>
+    <div class="card card--img"><div class="card__img" style="height:140px"><div style="background-image:url('assets/img/uc-logistics.jpg')"></div></div>
+      <div class="card__body" style="padding:20px 24px 24px"><h3 style="font-size:17px;margin:0">유통 · 금융</h3><p style="margin-top:6px;font-size:13px">수급 예측 · 기후 리스크 평가</p></div></div>
+  </div>
+</div></section><section class="cta"><div class="container">
+  <div class="cta__panel" data-reveal>
+    <h2>지금, 함께 시작하세요</h2><p>서비스 도입, 파트너 제휴, 투자 문의 — 무엇이든 좋습니다.<br>SGMA 팀이 24시간 내에 회신드립니다.</p>
+    <div class="hero__cta"><a href="contact.html" class="btn btn--white">Contact Us</a><a href="mailto:dh@sgma.io" class="btn btn--ghost">dh@sgma.io</a></div>
+  </div>
+</div></section><footer class="footer">
+  <div class="container">
+    <div class="footer__cols">
+      <div>
+        <div class="footer__logo">SGMA</div>
+        <p>지구온난화에 대응하는 지속 가능한 해양·수산 산업 솔루션<br>기상 및 수산 생태계 분석 GEO TECH 기업</p>
+        <small>㈜애쓰지마 (SGMA Corp.)  |  대표이사 임동현<br>본점  광주광역시 북구 자미로6번길 45, 빛고을 창업스테이션 514호<br>기업부설연구소  제주특별자치도 제주시 제주대학로 29, 1층 102호<br>E. <a href="mailto:dh@sgma.io">dh@sgma.io</a></small>
+      </div>
+      <div>
+        <h5>Services</h5>
+        <ul>
+          <li><a href="yeosin.html">어신 앱</a></li>
+          <li><a href="partners.html">어신 파트너스</a></li>
+          <li><a href="fuler.html">Fuler</a></li>
+          <li><a href="bluematrix.html">BlueMatrix</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="technology.html">Technology</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="th-card th-c2 rv" style="--d:.12s">
-      <p class="range">1주 ~ 1개월</p>
-      <p class="name" style="color:#133ee9">중기 예측</p>
-      <div class="div"></div>
-      <div class="grp"><p class="cap">TECHNOLOGY</p><div class="val"><p>NWP + S2S</p><p>(WMO Sub-seasonal)</p></div></div>
-      <div class="grp" style="width:250px"><p class="cap">USE&nbsp;&nbsp;CASES</p><div class="cases"><p>출하·매입 타이밍</p><p>양식 시즌 계획</p><p>유통 재고 관리</p></div></div>
-    </div>
-    <div class="th-card th-c3 rv" style="--d:.24s">
-      <p class="range">1 ~ 6개월</p>
-      <p class="name" style="color:#0d55e8">계절 예측</p>
-      <div class="div"></div>
-      <div class="grp"><p class="cap">TECHNOLOGY</p><div class="val"><p>SEAS5 · CFSv2</p><p>+ LSTM / XGBoost</p></div></div>
-      <div class="grp" style="width:250px"><p class="cap">USE&nbsp;&nbsp;CASES</p><div class="cases"><p>작황·생산량 시즌</p><p>분기 가격 전망</p><p>장마·태풍 시즌</p></div></div>
-    </div>
-    <div class="th-card th-c4 rv" style="--d:.36s">
-      <p class="range">6개월 ~ 3년</p>
-      <p class="name" style="color:#017be6">장기 전망</p>
-      <div class="div"></div>
-      <div class="grp"><p class="cap">TECHNOLOGY</p><div class="val"><p>Climatology + Analog</p><p>+ ML Ensemble</p></div></div>
-      <div class="grp" style="width:250px"><p class="cap">USE&nbsp;&nbsp;CASES</p><div class="cases"><p>정책·투자·헤지</p><p>보험 손해 예측</p><p>ESG 기후 risk</p></div></div>
+    <div class="footer__bar">
+      <span>© <b data-year>2026</b> SGMA Corp. All rights reserved.</span>
+      <span>Instagram · YouTube · Blog</span>
     </div>
   </div>
-
-  </div><!-- /s-horizon -->
-
-  <!-- ======== FUTURE VISION / industries ======== -->
-  <div class="sec s-future">
-  <div class="abs pill rv" style="left:120px;top:6505px">FUTURE&nbsp;&nbsp;VISION</div>
-  <div class="abs h2-46 rv" style="left:120px;top:6570px;letter-spacing:-.92px;white-space:normal;width:380px;--d:.1s">핵심 산업을 시작으로 확장을 이어갑니다</div>
-  <div class="abs body-16 rv" style="left:120px;top:6714px;width:334px;opacity:0;--d:.2s" data-keep-op=".6">산업별 특성을 반영한 Earth Intelligence Platform을 핵심 분야부터 순차적으로 확대합니다.</div>
-
-  <div class="abs ind-grid">
-    <div class="icol">
-      <div class="i-card rv" style="--d:.15s">
-        <div class="ph" style="left:-87px;top:-25px;width:474px;bottom:-30px"><img src="assets/imgUnsplashIqvfvh0Ajag.jpg" alt="농업"><div class="shade" style="background:linear-gradient(to bottom,rgba(35,37,54,.3) 7%,#232536 91.5%)"></div></div>
-        <p class="t">농업</p>
-        <div class="s"><p>기상과 농업 데이터를 결합한</p><p>농산물 생산·가격 예측</p></div>
-      </div>
-    </div>
-    <div class="icol">
-      <div class="i-card rv" style="--d:.1s">
-        <div class="ph" style="left:-233px;top:-19px;width:590px;bottom:-75px"><img src="assets/imgUnsplashYv593OyMKmo.jpg" alt="해양/수산업"><div class="shade" style="background:linear-gradient(to bottom,rgba(35,37,54,.3) 4.8%,#232536 81%)"></div></div>
-        <p class="t">해양 / 수산업</p>
-        <div class="s"><p>양식,어업, 해운 분야를</p><p>위한 AI 기반 예측</p></div>
-      </div>
-      <div class="i-card rv" style="--d:.25s">
-        <div class="ph" style="left:-17px;top:-101px;width:335px;bottom:-101px"><img src="assets/imgUnsplash82ZiY5Pzl1C.jpg" alt="유통"><div class="shade" style="background:linear-gradient(to bottom,rgba(35,37,54,.3) 20%,#232536 80%)"></div></div>
-        <p class="t">유통</p>
-        <div class="s"><p>도매시장 데이터를 활용</p><p>수요 예측 기반 유통 데이터</p></div>
-      </div>
-    </div>
-    <div class="icol">
-      <div class="i-card rv" style="--d:.2s">
-        <div class="ph" style="left:-49px;top:-4px;width:475px;bottom:-12px"><img src="assets/imgUnsplash4Zxp5VlmvnI1.jpg" alt="재난·공공"><div class="shade" style="background:linear-gradient(to bottom,rgba(35,37,54,.3) 1.1%,#232536 96.8%)"></div></div>
-        <p class="t">재난 · 공공</p>
-        <div class="s" style="width:210px"><p>지자체와 공공기관을</p><p>위한 재난 예측 플랫폼</p></div>
-      </div>
-      <div class="i-card rv" style="--d:.35s">
-        <div class="ph" style="left:-66px;top:-18px;width:502px;bottom:-17px"><img src="assets/imgUnsplashNBnvQW18.jpg" alt="금융"><div class="shade" style="background:linear-gradient(to bottom,rgba(35,37,54,.3) 5.4%,#232536 95%)"></div></div>
-        <p class="t">금융</p>
-        <div class="s"><p>기후 데이터를 활용한</p><p>금융 리스크 분석</p></div>
-      </div>
-    </div>
-  </div>
-
-  </div><!-- /s-future -->
-
-  <!-- ======== PARTNERS ======== -->
-  <section class="abs partners" id="sec-partners" style="left:50%">
-    <div class="head">
-      <div class="pill blue rv">PARTNERS&nbsp;&nbsp;&amp;&nbsp;&nbsp;INVESTORS</div>
-      <h2 class="rv" style="--d:.1s">함께 만들어갑니다</h2>
-      <p class="lead rv" style="--d:.2s">Earth Intelligence 시장 선점의 다음 단계 — 투자 · 도입 · 기술 파트너십.</p>
-    </div>
-    <div class="marquee rv" style="--d:.25s">
-      <div class="marquee-track" id="marqueeTrack">
-        <div class="logo-card"><img src="assets/imgImage16.png" alt="Partner"></div>
-        <div class="logo-card"><img src="assets/imgImage16.png" alt="Partner"></div>
-        <div class="logo-card"><img src="assets/imgImage16.png" alt="Partner"></div>
-        <div class="logo-card"><img src="assets/imgImage16.png" alt="Partner"></div>
-        <div class="logo-card"><img src="assets/imgImage16.png" alt="Partner"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ======== FOOTER ======== -->
-  <footer id="sec-footer">
-    <div class="f-top">
-      <div class="f-brand">
-        <p class="f-logo">SGMA</p>
-        <p class="f-tag">지구의 데이터로 산업을 움직입니다.</p>
-      </div>
-      <div class="f-cols">
-        <div class="f-col">
-          <h4>서비스</h4>
-          <ul><li><a data-go="top">홈</a></li><li><a data-go="sec-about">About Us</a></li><li><a data-go="sec-partners">파트너</a></li></ul>
-        </div>
-        <div class="f-col">
-          <h4>가맹 절차</h4>
-          <ul><li><a>가맹 절차</a></li><li><a>수수료 안내</a></li><li><a>정산 가이드</a></li><li><a>FAQ</a></li></ul>
-        </div>
-        <div class="f-col">
-          <h4>문의</h4>
-          <ul><li><a href="mailto:partner@sgma.kr">partner@sgma.kr</a></li><li><a href="tel:02-1234-5678">02-1234-5678</a></li><li><a>개인정보처리방침</a></li><li><a>이용약관</a></li></ul>
-        </div>
-      </div>
-    </div>
-    <div class="f-div"></div>
-    <p class="f-copy">© 2026 SGMA. All rights reserved.</p>
-  </footer>
-
-</div><!-- /artboard -->
-</div><!-- /scale-wrap -->
-
-<script>
-(function(){
-  /* ---- nav scroll state ---- */
-  var nav = document.getElementById('nav');
-  addEventListener('scroll', function(){
-    nav.classList.toggle('scrolled', scrollY > 40);
-  }, {passive:true});
-
-  /* ---- anchor navigation ---- */
-  document.querySelectorAll('[data-go]').forEach(function(el){
-    el.addEventListener('click', function(e){
-      e.preventDefault();
-      var id = el.getAttribute('data-go');
-      if(id === 'top'){ scrollTo({top:0, behavior:'smooth'}); return; }
-      var t = document.getElementById(id);
-      if(t){ scrollTo({top: t.getBoundingClientRect().top + scrollY - 90, behavior:'smooth'}); }
-    });
-  });
-
-  /* ---- IntersectionObserver reveal (stagger via --d) ---- */
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(en){
-      if(en.isIntersecting){
-        var el = en.target;
-        var d = parseFloat(getComputedStyle(el).getPropertyValue('--d')) || 0;
-        setTimeout(function(){
-          el.classList.add('on');
-          var keep = el.getAttribute('data-keep-op');
-          if(keep){ el.style.opacity = keep; }
-        }, d * 1000);
-        io.unobserve(el);
-      }
-    });
-  }, {threshold:.18, rootMargin:'0px 0px -40px 0px'});
-  document.querySelectorAll('.rv,.rv-fade,.spectrum,.g-wrap').forEach(function(el){ io.observe(el); });
-
-  /* ---- counters ---- */
-  function fmt(v, mode){
-    if(mode==='m'){ return v >= 1000000 ? '1M+' : (v/1000000).toFixed(1).replace(/\.0$/,'') + 'M'; }
-    if(mode==='man'){ return v + '만+'; }
-    return String(v);
-  }
-  function runCounter(el){
-    var to = parseInt(el.getAttribute('data-count'),10);
-    var mode = el.getAttribute('data-fmt') || '';
-    var t0 = null, dur = 1600;
-    function step(ts){
-      if(!t0) t0 = ts;
-      var p = Math.min((ts - t0)/dur, 1);
-      var e = 1 - Math.pow(1 - p, 3);
-      var v = Math.round(to * e);
-      if(mode==='m'){ el.textContent = p===1 ? '1M+' : (v/1000000 < .1 ? '0.1M' : ((v/1000000).toFixed(1)+'M')); }
-      else if(mode==='man'){ el.textContent = v + (p===1?'만+':'만'); }
-      else { el.textContent = String(v); }
-      if(p < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  var cio = new IntersectionObserver(function(entries){
-    entries.forEach(function(en){
-      if(en.isIntersecting){ runCounter(en.target); cio.unobserve(en.target); }
-    });
-  }, {threshold:.6});
-  document.querySelectorAll('[data-count]').forEach(function(el){ cio.observe(el); });
-
-  /* ---- marquee: duplicate once for seamless loop ---- */
-  var track = document.getElementById('marqueeTrack');
-  track.innerHTML += track.innerHTML;
-
-  /* ---- mobile menu ---- */
-  var burger = document.querySelector('.nav-burger');
-  if(burger){
-    burger.addEventListener('click', function(){ nav.classList.toggle('open'); });
-    document.querySelectorAll('.nav-menu [data-go]').forEach(function(el){
-      el.addEventListener('click', function(){ nav.classList.remove('open'); });
-    });
-  }
-
-  /* ---- responsive: scale 1440 artboard between 769-1439px ---- */
-  var wrap = document.querySelector('.scale-wrap');
-  var art = document.querySelector('.artboard');
-  function fitScale(){
-    var w = document.documentElement.clientWidth;
-    if(w > 768 && w < 1440){
-      var s = w / 1440;
-      art.style.transform = 'scale(' + s + ')';
-      art.style.transformOrigin = 'top left';
-      wrap.style.height = (8518 * s) + 'px';
-    } else {
-      art.style.transform = '';
-      wrap.style.height = '';
-    }
-  }
-
-  /* ---- responsive: scale product graphics on mobile ---- */
-  function fitGraphics(){
-    var w = document.documentElement.clientWidth;
-    var mobile = w <= 768;
-    document.querySelectorAll('.g-wrap').forEach(function(g){
-      if(mobile){
-        var gw = g.getBoundingClientRect().width ? 380 : 380;
-        var avail = Math.min(w - 88, 380);
-        var s = avail / 380;
-        if(s < 1){
-          g.style.transform = 'scale(' + s + ')';
-          g.style.transformOrigin = 'top left';
-          g.style.marginBottom = (-210 * (1 - s)) + 'px';
-        } else { g.style.transform=''; g.style.marginBottom=''; }
-      } else {
-        g.style.transform=''; g.style.marginBottom='';
-      }
-    });
-  }
-  function onResize(){ fitScale(); fitGraphics(); }
-  addEventListener('resize', onResize, {passive:true});
-  onResize();
-})();
-</script>
-</body>
-</html>
+</footer>
+<script src="assets/js/main.js"></script></body></html>
