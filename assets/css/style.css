@@ -317,3 +317,7 @@ ul{list-style:none}
   *,*::before,*::after{animation:none!important;transition:none!important}
   [data-reveal],.hero .st{opacity:1;transform:none}
 }
+
+/* feature icons */
+.card__top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
+.card__icon{width:62px;height:62px;object-fit:contain}
