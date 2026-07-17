@@ -1,0 +1,25 @@
+# SGMA — Earth Intelligence
+
+> SGMA(주식회사 애쓰지마)는 지구온난화에 대응하는 지속 가능한 해양·수산 산업 솔루션을 만드는 한국의 GEO TECH 기업입니다. 기상·해양 데이터와 AI로 일반 사용자에게는 야외 활동 지수를, 기업과 정부에는 예측 기반 의사결정 데이터를 제공합니다.
+
+## 핵심 정보
+- 설립: 2020년 4월 | 해양수산부 혁신기업 국가대표 1000 · 혁신 프리미어 1000 · GS인증 1등급 · ISO 27001 · TIPS 졸업 · 기상사업자 등록
+- 기술: MME(멀티모델 앙상블) 기상 예보·관측, TSF(수산생물 생태계 시계열 예측), Activity Index(테마별 활동지수 알고리즘)
+- 데이터: 한국 공공 211 + 글로벌 161 + 우주·위성 99 = 471개 소스, 24-72h 예측 리드타임, 5km 격자 해구 해상도
+- 특허 등록·출원 16건, 상표 8건 (어신, HarborX, BlueMatrix, Fuler 등)
+
+## 서비스
+- [어신 앱](https://sgma.io/yeosin.html): B2C 해양 내비게이터 — AI 낚시 지수, 어종별 입질확률, 물때·조석, 해양 레저 테마별 예보. 누적 다운로드 83만, MAU 23.1만.
+- [어신 파트너스](https://sgma.io/partners.html): 선상낚시·해양레저 업체 B2B 제휴 플랫폼 — 예약, 결제 수수료 1.4~2.4%, 어신 카드(수협은행·BC) 연계.
+- [Fuler](https://sgma.io/fuler.html): 글로벌 AI 낚시 기록 — 사진 한 장으로 어종 판별·치수 계측, 어획 시점 환경 데이터 자동 기록. EU CATCH·미국 SIMP·WCPFC 등 어획 기록 의무화 대응.
+- [BlueMatrix](https://sgma.io/bluematrix.html): B2B·B2G 기상·해양 데이터 플랫폼 — 글로벌 기상 예보·관측, 수산 생태계 변화 예측, Activity Index를 API·SaaS로 제공.
+
+## 페이지
+- [회사 소개](https://sgma.io/about.html): 미션·비전, 연혁(2020-2026), 리더십, 투자사
+- [기술](https://sgma.io/technology.html): MME, TSF, Activity Index 수식, 시스템 아키텍처, 특허·IP
+- [문의](https://sgma.io/contact.html): info@sgma.io — 서비스 도입, API·데이터, 파트너 입점, 기술협력, 투자
+
+## 연락처
+- 이메일: info@sgma.io
+- 본점: 광주광역시 북구 자미로6번길 45, 빛고을 창업스테이션 514호
+- 연구소: 제주특별자치도 제주시 제주대학로 29, 1층 102호
