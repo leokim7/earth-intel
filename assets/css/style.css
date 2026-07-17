@@ -53,7 +53,12 @@ ul{list-style:none}
 .nav{position:sticky;top:0;z-index:100;background:#fff;border-bottom:1px solid #e6e8ee;transition:box-shadow .25s}
 .nav.scrolled{box-shadow:0 6px 24px rgba(10,10,30,.08)}
 .nav__in{max-width:1440px;margin:0 auto;height:76px;display:flex;align-items:center;justify-content:space-between;padding:0 48px}
-.nav__logo{font-family:var(--en);font-weight:700;font-size:22px;letter-spacing:.32em;color:var(--ink)}
+.nav__logo{font-family:var(--en);font-weight:700;font-size:22px;letter-spacing:.32em;color:var(--ink);display:flex;align-items:center}
+.nav__logo img{height:24px;display:block}
+.footer__logo img{height:26px;display:block}
+/* nav CTA 버튼 — 메뉴 링크 규칙보다 우선 */
+.nav__menu>li>a.nav__cta{display:inline-flex;color:#fff;font-weight:700;padding:11px 22px;border-radius:var(--r-btn)}
+.nav__menu>li>a.nav__cta:hover,.nav__menu>li>a.nav__cta.active{color:#fff}
 .nav__menu{display:flex;align-items:center;gap:34px}
 .nav__menu>li>a{font-size:14.5px;font-weight:500;color:var(--mut);transition:color .15s;padding:8px 0}
 .nav__menu>li>a:hover,.nav__menu>li>a.active{color:var(--ink);font-weight:700}
