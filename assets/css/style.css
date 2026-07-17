@@ -68,8 +68,9 @@ ul{list-style:none}
 .dd>a{display:inline-flex;align-items:center;gap:7px}
 .dd .caret{width:9px;height:6px;fill:currentColor;transition:transform .2s}
 .dd:hover .caret,.dd.open .caret{transform:rotate(180deg)}
-.dd__panel{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(8px);width:340px;background:#fff;border:1px solid var(--line);border-radius:var(--r-panel);box-shadow:0 18px 44px rgba(10,10,30,.16);padding:10px;opacity:0;visibility:hidden;transition:opacity .2s ease,transform .2s ease}
-.dd:hover .dd__panel,.dd.open .dd__panel{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.dd__panel{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(8px);width:340px;background:#fff;border:1px solid var(--line);border-radius:var(--r-panel);box-shadow:0 18px 44px rgba(10,10,30,.16);padding:10px;opacity:0;visibility:hidden;transition:opacity .16s ease .18s,transform .16s ease .18s,visibility 0s linear .36s}
+.dd__panel::before{content:'';position:absolute;left:0;right:0;top:-16px;height:16px}
+.dd:hover .dd__panel,.dd.open .dd__panel{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);transition:opacity .16s ease,transform .16s ease,visibility 0s}
 .dd__item{display:block;padding:12px 16px;border-radius:6px;transition:background .15s}
 .dd__item:hover{background:var(--tint)}
 .dd__item b{display:flex;align-items:center;gap:8px;font-size:15px;color:var(--ink)}
@@ -300,7 +301,8 @@ ul{list-style:none}
   .nav__menu.open{transform:none}
   .nav__menu>li{width:100%}
   .nav__menu>li>a{display:block;padding:13px 0;font-size:16px}
-  .dd__panel{position:static;transform:none;width:100%;box-shadow:none;border:0;padding:0 0 6px 12px;opacity:1;visibility:visible;display:none}
+  .dd__panel,.dd:hover .dd__panel,.dd.open .dd__panel{position:static;transform:none;width:100%;box-shadow:none;border:0;padding:0 0 6px 12px;opacity:1;visibility:visible;display:none;transition:none}
+  .dd__panel::before{display:none}
   .dd.open .dd__panel{display:block}
   .nav__burger{display:block}
   .sec{padding:72px 0}
