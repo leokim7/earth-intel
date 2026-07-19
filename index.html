@@ -52,82 +52,133 @@
       <li><a href="contact.html" class="btn btn--pri nav__cta">Contact Us</a></li>
     </ul>
   </div>
-</header><section class="hero">
+</header><section class="hero hero--split">
   <div class="hero__bg" style="background-image:url('assets/img/hero-home.jpg')"></div>
   <div class="hero__dim"></div>
   <div class="hero__in">
-    <div class="st eyebrow" style="color:#aab3ff">GEO-TECH · EARTH INTELLIGENCE</div>
-    <h1 class="st">지구의 데이터로<br>산업을 움직입니다</h1>
-    <p class="st sub">SGMA는 기상·해양 데이터와 AI로 수산·레저·공공의 의사결정을 돕는 GEO TECH 기업입니다.<br>지구온난화 시대, 예측을 넘어 실행까지 연결합니다.</p>
-    <div class="st hero__cta"><a href="#services" class="btn btn--pri">서비스 둘러보기</a><a href="about.html" class="btn btn--ghost">회사 소개 →</a></div>
-    <div class="st stats"><div><b data-count="83" data-decimals="0" data-suffix="만+">83만+</b><span>어신 누적 다운로드</span></div><div><b data-count="471" data-decimals="0" data-suffix="">471</b><span>연동 데이터 소스</span></div><div><b>24-72h</b><span>예측 리드타임</span></div><div><b data-count="4" data-decimals="0" data-suffix="">4</b><span>서비스 라인업</span></div></div>
+    <div class="hero__left">
+      <div class="st eyebrow" style="color:#aab3ff">Weather &amp; Ocean Intelligence for Real-World Decisions</div>
+      <h1 class="st">기상·해양 데이터를<br>산업의 의사결정으로</h1>
+      <p class="st sub">SGMA는 기상·해양 관측 데이터와 AI 예측 기술을 기반으로<br>수산업, 해양 레저, 공공기관의 의사결정을 지원합니다.</p>
+      <div class="st hero__cta" style="justify-content:flex-start"><a href="contact.html" class="btn btn--pri">데이터·서비스 도입 문의</a></div>
+      <div class="st aud">
+        <a href="yeosin.html"><i>개인 사용자</i><b>어신 앱 보기 →</b></a>
+        <a href="bluematrix.html"><i>기업 · 기관</i><b>BlueMatrix 도입 →</b></a>
+        <a href="partners.html"><i>사업자</i><b>파트너스 입점 →</b></a>
+      </div>
+    </div>
+    <div class="insight st">
+      <div class="icard">
+        <div class="icard__t"><i class="alertdot"></i><b>강풍 주의 — 서해 중부</b></div>
+        <span>24시간 후 풍속 14m/s 예측 · MME 신뢰도 92%</span>
+        <div class="conf"><div style="width:92%"></div></div>
+      </div>
+      <div class="icard">
+        <b style="font-size:13.5px">파고 예측 (72h) — 제주 남부 해구</b>
+        <div class="mbars"><i style="height:18px"></i><i style="height:24px"></i><i style="height:30px"></i><i style="height:42px"></i><i class="hot" style="height:56px"></i><i style="height:48px"></i><i style="height:34px"></i><i style="height:26px"></i><i style="height:22px"></i></div>
+        <span>피크 2.8m · 7/19 09:00 KST</span>
+      </div>
+      <div class="icard icard--api">
+        <code><em>GET /v1/forecast/point</em>
+{ "wave_height": 2.8,
+  "wind_speed": 14.2,
+  "activity_index": 3.1,
+  <u>"risk": "HIGH_WIND"</u> }</code>
+      </div>
+    </div>
   </div>
 </section>
+<section class="proof"><div class="container">
+  <div class="proof__nums" data-stagger="0.07">
+    <div><b data-count="83" data-decimals="0" data-suffix="만+">83만+</b><span>어신 누적 다운로드</span></div>
+    <div><b data-count="23.1" data-decimals="1" data-suffix="만">23.1만</b><span>MAU (최근 90일)</span></div>
+    <div><b data-count="471" data-decimals="0" data-suffix="">471</b><span>연동 데이터 피드</span></div>
+    <div><b>24-72h</b><span>예측 리드타임</span></div>
+    <div><b data-count="16" data-decimals="0" data-suffix="건">16건</b><span>특허 등록·출원</span></div>
+    <div><b>5년</b><span>누적 관측 아카이브</span></div>
+  </div>
+  <div class="proof__badges" data-stagger="0.05">
+    <span>해양수산부 혁신기업 국가대표 1000</span><span>KIOST 기술이전 MOU</span><span>수협은행 · BC카드 제휴</span><span>TIPS 졸업</span><span>GS인증 1등급</span><span>ISO 27001</span><span>기상사업자 등록</span>
+  </div>
+</div></section>
 <section class="sec" id="services"><div class="container">
-  <div data-reveal><div class="eyebrow">Our Services</div><h2 class="h2">활동 지수부터 의사결정까지,<br>데이터가 판단을 돕습니다</h2><p class="sub">일반 사용자에게는 오늘의 야외 활동 지수를, 기업과 정부에는 예측 기반 의사결정 데이터를 — 모두 하나의 기술에서 나옵니다.</p></div>
-  <div class="grid grid--2" data-stagger="0.1">
+  <div data-reveal><div class="eyebrow">One Platform, Multiple Channels</div><h2 class="h2">하나의 인텔리전스 플랫폼,<br>산업과 일상으로 확장되는 채널</h2></div>
+  <div class="feature" data-reveal>
+    <div class="feature__body">
+      <span class="tag" style="background:var(--acc);color:#fff;border-color:var(--acc)">Core Platform</span>
+      <h3 style="font-size:30px;font-weight:900;margin-top:16px">BlueMatrix</h3>
+      <p style="color:#a5a5b0;font-size:15px;line-height:1.7;margin-top:12px">SGMA의 기상·해양 데이터와 예측 기술을 API·SaaS로 제공하는 핵심 인텔리전스 플랫폼. 471개 데이터 피드, MME·TSF 예측 엔진, 24-72h 리드타임.</p>
+      <div class="hero__cta" style="justify-content:flex-start;margin-top:24px">
+        <a href="contact.html" class="btn btn--pri">도입 문의</a>
+        <a href="bluematrix.html" class="btn btn--ghost">플랫폼 보기 →</a>
+      </div>
+    </div>
+    <div class="feature__img" style="background-image:url('assets/img/hero-bluematrix.jpg')">
+      <div class="feature__slot"><b>실제 대시보드 스크린샷 영역</b><span>BlueMatrix 지도·예보 화면으로 교체 예정</span></div>
+    </div>
+  </div>
+  <div class="grid grid--3" data-stagger="0.1">
     <a class="card card--img" href="yeosin.html">
-      <div class="card__img"><div style="background-image:url('assets/img/card-yeosin.jpg')"></div></div>
-      <div class="card__body"><span class="tag">B2C App</span><h3>어신</h3><div class="cap">AI 낚시 지수 · 해양 레저 내비게이터</div>
-      <p>낚시 지수, 어종 입질확률, 물때·조석, 테마별 활동지수까지 바다의 모든 데이터를 한 앱에서. 누적 다운로드 83만, MAU 23만의 국내 대표 해양 정보 앱입니다.</p><span class="more">자세히 보기</span></div></a>
+      <div class="card__img" style="height:150px"><div style="background-image:url('assets/img/card-yeosin.jpg')"></div></div>
+      <div class="card__body"><h3 style="margin-top:0">어신</h3><div class="num" style="font-size:11px;letter-spacing:.14em">B2C 데이터 채널</div>
+      <p>83만 사용자의 해양 활동 데이터가 예측 모델을 강화합니다.</p><span class="more">자세히 보기</span></div></a>
     <a class="card card--img" href="partners.html">
-      <div class="card__img"><div style="background-image:url('assets/img/card-partners.jpg')"></div></div>
-      <div class="card__body"><span class="tag">B2B Partner</span><h3>어신 파트너스</h3><div class="cap">선상낚시 · 해양레저 업체 제휴 플랫폼</div>
-      <p>예약 관리와 수수료 경쟁력 있는 결제, 데이터 기반 출항 판단까지. 23만 MAU 사용자와 파트너 업체를 연결해 함께 성장합니다.</p><span class="more">자세히 보기</span></div></a>
+      <div class="card__img" style="height:150px"><div style="background-image:url('assets/img/card-partners.jpg')"></div></div>
+      <div class="card__body"><h3 style="margin-top:0">어신 파트너스</h3><div class="num" style="font-size:11px;letter-spacing:.14em">산업 연결 채널</div>
+      <p>선상낚시·레저 업체를 플랫폼 데이터와 결제로 연결합니다.</p><span class="more">자세히 보기</span></div></a>
     <a class="card card--img" href="fuler.html">
-      <div class="card__img"><div style="background-image:url('assets/img/card-fuler.jpg')"></div></div>
-      <div class="card__body"><span class="tag">Global · AI</span><h3>Fuler</h3><div class="cap">AI 어종 인식 · 어획 기록 서비스</div>
-      <p>사진 한 장으로 어종 판별과 치수 계측을 자동으로. 어획 시점의 기상·해양 정보를 매칭해 기록을 데이터 자산으로 만듭니다. 2026 글로벌 출시.</p><span class="more">자세히 보기</span></div></a>
-    <a class="card card--img" href="bluematrix.html">
-      <div class="card__img"><div style="background-image:url('assets/img/card-bluematrix.jpg')"></div></div>
-      <div class="card__body"><span class="tag">B2B · B2G Data</span><h3>BlueMatrix</h3><div class="cap">Earth Intelligence 데이터 플랫폼</div>
-      <p>MME 기상 예보·관측과 수산 생태계 변화 예측(TSF)을 API와 SaaS로 제공합니다. 기업과 정부의 의사결정을 데이터로 지원합니다.</p><span class="more">자세히 보기</span></div></a>
+      <div class="card__img" style="height:150px"><div style="background-image:url('assets/img/card-fuler.jpg')"></div></div>
+      <div class="card__body"><h3 style="margin-top:0">Fuler</h3><div class="num" style="font-size:11px;letter-spacing:.14em">글로벌 데이터 수집 · AI 채널</div>
+      <p>전 세계 어획 기록이 생태계 예측의 학습 데이터가 됩니다.</p><span class="more">자세히 보기</span></div></a>
   </div>
 </div></section>
 <section class="sec sec--dark"><div class="container">
-  <div data-reveal><div class="eyebrow">Core Technology</div><h2 class="h2">예측을 만드는 세 개의 엔진</h2><p class="sub">5년간 축적한 기상·해양 관측 데이터와 자체 예측 모델이 모든 서비스의 기반입니다.</p></div>
-  <div class="grid grid--3" data-stagger="0.12">
-    <div class="card"><span class="badge">MME</span><h3>멀티모델 앙상블 기상 엔진</h3><p>국가별 선진 기상청 예보 데이터와 ECMWF 예보·ERA5 재분석 데이터를 결합, BIAS 오차 보정으로 정밀도를 높인 기상 예보·관측 시스템.</p></div>
-    <div class="card"><span class="badge">TSF</span><h3>수산 생태계 변화 예측</h3><p>5km 격자 해구 단위 어획 빅데이터와 위성 관측 4차원 수괴 정보 기반, 수산생물 생태계 변화 시계열 예측 시스템.</p></div>
-    <div class="card"><span class="badge">AI</span><h3>테마별 활동지수 알고리즘</h3><p>낚시·서핑·스쿠버다이빙 등 해양 레저 종목별 가중치를 적용한 Activity Index — 오늘 바다에 나가도 되는지 한 번에 판단.</p></div>
-  </div>
-  <div class="pipe" data-seq data-reveal>
-    <div class="pipe__step"><i>01</i><b>471개 소스 수집</b></div><span class="pipe__arrow">→</span>
-    <div class="pipe__step"><i>02</i><b>표준화 · 아카이빙</b></div><span class="pipe__arrow">→</span>
-    <div class="pipe__step"><i>03</i><b>MME 모델 보정</b></div><span class="pipe__arrow">→</span>
-    <div class="pipe__step"><i>04</i><b>테마별 알고리즘</b></div><span class="pipe__arrow">→</span>
-    <div class="pipe__step"><i>05</i><b>서비스 API</b></div>
+  <div data-reveal><div class="eyebrow">SGMA Intelligence Stack</div><h2 class="h2">하나의 스택에서 작동하는 세 개의 예측 모델</h2><p class="sub">수집부터 전달까지 — 모든 서비스가 같은 인텔리전스 스택 위에서 동작합니다.</p></div>
+  <div class="stack" data-seq data-reveal>
+    <div class="pipe__step stack__card"><i>01</i><b>Data Collection</b><span>471개 데이터 피드 수집</span></div><span class="pipe__arrow">→</span>
+    <div class="pipe__step stack__card"><i>02</i><b>Standardization</b><span>GRIB 표준화 · 아카이빙</span></div><span class="pipe__arrow">→</span>
+    <div class="pipe__step stack__card core"><i>03</i><b>MME</b><span>Weather Intelligence</span></div><span class="pipe__arrow">→</span>
+    <div class="pipe__step stack__card core"><i>04</i><b>TSF</b><span>Ecosystem Intelligence</span></div><span class="pipe__arrow">→</span>
+    <div class="pipe__step stack__card core"><i>05</i><b>Activity Index</b><span>Activity Intelligence</span></div><span class="pipe__arrow">→</span>
+    <div class="pipe__step stack__card"><i>06</i><b>API &amp; SaaS</b><span>Delivery</span></div>
   </div>
 </div></section>
 <section class="sec"><div class="container">
-  <div style="display:flex;justify-content:space-between;align-items:center;gap:40px;flex-wrap:wrap">
-    <div data-reveal><div class="eyebrow">Data Asset</div><h2 class="h2">데이터의 깊이가<br>차별을 만듭니다</h2><p class="sub">경쟁사가 복제할 수 없는 5년 누적 관측·어획 데이터. 471개 소스가 실시간으로 연결됩니다.</p></div>
-    <div class="bignum" data-count="471" data-reveal>471</div>
-  </div>
-  <div class="grid grid--3" data-stagger="0.12">
-    <div class="card"><b class="num" style="font-size:32px">211</b><h3 style="margin-top:6px">한국 공공</h3><p>KMA · KHOA · 해양수산부 · 국립수산과학원 등 국내 공공 관측망</p></div>
-    <div class="card"><b class="num" style="font-size:32px">161</b><h3 style="margin-top:6px">글로벌</h3><p>ECMWF · NOAA · JMA 등 글로벌 기상·해양 기관 데이터</p></div>
-    <div class="card"><b class="num" style="font-size:32px">99</b><h3 style="margin-top:6px">우주 · 위성</h3><p>위성 관측 4차원 수괴 정보 · 해색 · 수온 원격탐사 데이터</p></div>
+  <div data-reveal><div class="eyebrow">Industry Outcomes</div><h2 class="h2">산업이 얻는 결과</h2></div>
+  <div class="grid grid--4" data-stagger="0.1">
+    <div class="card card--img"><div class="card__img" style="height:120px"><div style="background-image:url('assets/img/uc-ocean.jpg')"></div></div>
+      <div class="card__body ocard"><h3 style="font-size:17px;margin-top:0">해양 · 수산업</h3>
+      <div class="orow"><i class="ol ol--p">문제</i><p>수온 변화·이상 해황으로 인한 조업·양식 리스크</p></div>
+      <div class="orow"><i class="ol">데이터</i><p>수온 · 파고 · 조류 · 어획 · 위성</p></div>
+      <div class="orow"><i class="ol ol--r">결과</i><p>어장 예측 · 출항 판단 · 폐사 위험 경보</p></div></div></div>
+    <div class="card card--img"><div class="card__img" style="height:120px"><div style="background-image:url('assets/img/uc-disaster.jpg')"></div></div>
+      <div class="card__body ocard"><h3 style="font-size:17px;margin-top:0">재난 · 공공</h3>
+      <div class="orow"><i class="ol ol--p">문제</i><p>국지적 강풍·폭우·월파 위험</p></div>
+      <div class="orow"><i class="ol">데이터</i><p>예보 모델 · 관측소 · 위성 · 지형</p></div>
+      <div class="orow"><i class="ol ol--r">결과</i><p>지역별 조기경보 · 대응 우선순위</p></div></div></div>
+    <div class="card card--img"><div class="card__img" style="height:120px"><div style="background-image:url('assets/img/uc-agri.jpg')"></div></div>
+      <div class="card__body ocard"><h3 style="font-size:17px;margin-top:0">농업</h3>
+      <div class="orow"><i class="ol ol--p">문제</i><p>이상기후로 인한 작황 불확실성</p></div>
+      <div class="orow"><i class="ol">데이터</i><p>기온 · 강수 · 토양 · 작황</p></div>
+      <div class="orow"><i class="ol ol--r">결과</i><p>파종·수확 시기 예측 · 생산량 리스크 분석</p></div></div></div>
+    <div class="card card--img"><div class="card__img" style="height:120px"><div style="background-image:url('assets/img/uc-logistics.jpg')"></div></div>
+      <div class="card__body ocard"><h3 style="font-size:17px;margin-top:0">유통 · 금융</h3>
+      <div class="orow"><i class="ol ol--p">문제</i><p>기후 변동에 따른 수급·리스크 불확실성</p></div>
+      <div class="orow"><i class="ol">데이터</i><p>수요 · 물류 · 기후 시계열</p></div>
+      <div class="orow"><i class="ol ol--r">결과</i><p>수급 예측 · 기후 리스크 평가</p></div></div></div>
   </div>
 </div></section>
-<section class="sec sec--dark"><div class="container">
-  <div data-reveal><div class="eyebrow">Future Vision</div><h2 class="h2">핵심 산업을 시작으로 확장을 이어갑니다</h2></div>
-  <div class="grid grid--4" data-stagger="0.1">
-    <div class="card card--img"><div class="card__img" style="height:140px"><div style="background-image:url('assets/img/uc-ocean.jpg')"></div></div>
-      <div class="card__body" style="padding:20px 24px 24px"><h3 style="font-size:17px;margin:0">해양 · 수산업</h3><p style="margin-top:6px;font-size:13px">어획량 예측 · 양식장 폐사 예방</p></div></div>
-    <div class="card card--img"><div class="card__img" style="height:140px"><div style="background-image:url('assets/img/uc-disaster.jpg')"></div></div>
-      <div class="card__body" style="padding:20px 24px 24px"><h3 style="font-size:17px;margin:0">재난 · 공공</h3><p style="margin-top:6px;font-size:13px">이상 해황 조기 경보 · 정책 데이터</p></div></div>
-    <div class="card card--img"><div class="card__img" style="height:140px"><div style="background-image:url('assets/img/uc-agri.jpg')"></div></div>
-      <div class="card__body" style="padding:20px 24px 24px"><h3 style="font-size:17px;margin:0">농업</h3><p style="margin-top:6px;font-size:13px">기상 예보 기반 작황 관리</p></div></div>
-    <div class="card card--img"><div class="card__img" style="height:140px"><div style="background-image:url('assets/img/uc-logistics.jpg')"></div></div>
-      <div class="card__body" style="padding:20px 24px 24px"><h3 style="font-size:17px;margin:0">유통 · 금융</h3><p style="margin-top:6px;font-size:13px">수급 예측 · 기후 리스크 평가</p></div></div>
-  </div>
-</div></section><section class="cta"><div class="container">
+<section class="cta"><div class="container">
   <div class="cta__panel" data-reveal>
-    <h2>지금, 함께 시작하세요</h2><p>서비스 도입, 파트너 제휴, 투자 문의 — 무엇이든 좋습니다.<br>SGMA 팀이 24시간 내에 회신드립니다.</p>
-    <div class="hero__cta"><a href="contact.html" class="btn btn--white">Contact Us</a><a href="mailto:info@sgma.io" class="btn btn--ghost">info@sgma.io</a></div>
+    <h2>SGMA와 시작하세요</h2><p>목적에 맞는 문의 채널로 24시간 내 회신드립니다.</p>
+    <div class="cta3">
+      <a href="contact.html" class="cta3--pri"><b>서비스 도입</b><i>기업·기관 데이터 도입 문의</i></a>
+      <a href="contact.html"><b>파트너 입점</b><i>선상낚시·레저 업체 제휴</i></a>
+      <a href="contact.html"><b>투자 · 제휴</b><i>IR 및 공동 연구</i></a>
+    </div>
   </div>
-</div></section><footer class="footer">
+</div></section>
+<footer class="footer">
   <div class="container">
     <div class="footer__cols">
       <div>
